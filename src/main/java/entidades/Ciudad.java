@@ -51,7 +51,7 @@ public class Ciudad implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "CiuId")
-    private BigDecimal ciuId;
+    private Long ciuId;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 60)
@@ -91,11 +91,11 @@ public class Ciudad implements Serializable {
     public Ciudad() {
     }
 
-    public Ciudad(BigDecimal ciuId) {
+    public Ciudad(Long ciuId) {
         this.ciuId = ciuId;
     }
 
-    public Ciudad(BigDecimal ciuId, String ciuNombre, String ciuEstado, Date ciuFHR, String ciuUser, String ciuCodigo, String ciuInicial) {
+    public Ciudad(Long ciuId, String ciuNombre, String ciuEstado, Date ciuFHR, String ciuUser, String ciuCodigo, String ciuInicial) {
         this.ciuId = ciuId;
         this.ciuNombre = ciuNombre;
         this.ciuEstado = ciuEstado;
@@ -105,11 +105,11 @@ public class Ciudad implements Serializable {
         this.ciuInicial = ciuInicial;
     }
 
-    public BigDecimal getCiuId() {
+    public Long getCiuId() {
         return ciuId;
     }
 
-    public void setCiuId(BigDecimal ciuId) {
+    public void setCiuId(Long ciuId) {
         this.ciuId = ciuId;
     }
 

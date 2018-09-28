@@ -16,6 +16,14 @@
                         <p:inputText id="proId" value="#{provinciaController.selected.proId}" title="#{bundle.EditProvinciaTitle_proId}" required="true" requiredMessage="#{bundle.EditProvinciaRequiredMessage_proId}"/>
                         <p:outputLabel value="#{bundle.EditProvinciaLabel_proNombre}" for="proNombre" />
                         <p:inputText id="proNombre" value="#{provinciaController.selected.proNombre}" title="#{bundle.EditProvinciaTitle_proNombre}" required="true" requiredMessage="#{bundle.EditProvinciaRequiredMessage_proNombre}"/>
+                        
+                        <p:outputLabel value="#{bundle.EditProvinciaLabel_proEstado}" for="proEstado" />
+                        <p:selectOneMenu id="proEstado" value="#{provinciaController.selected.proEstado}" required="true" requiredMessage="#{bundle.EditProvinciaRequiredMessage_proEstado}">
+                            <f:selectItem itemLabel="ACTIVO" itemValue="A"></f:selectItem>
+                            <f:selectItem itemLabel="INACTIVO" itemValue="I"></f:selectItem>
+                        </p:selectOneMenu>
+                        
+                        
                         <p:outputLabel value="#{bundle.EditProvinciaLabel_proEstado}" for="proEstado" />
                         <p:inputText id="proEstado" value="#{provinciaController.selected.proEstado}" title="#{bundle.EditProvinciaTitle_proEstado}" required="true" requiredMessage="#{bundle.EditProvinciaRequiredMessage_proEstado}"/>
                         <p:outputLabel value="#{bundle.EditProvinciaLabel_proFHR}" for="proFHR" />

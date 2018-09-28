@@ -6,9 +6,11 @@
 package ejb;
 
 import entidades.Pais;
+import java.math.BigDecimal;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -27,6 +29,18 @@ public class PaisFacade extends AbstractFacade<Pais> {
 
     public PaisFacade() {
         super(Pais.class);
+    }
+    
+     //funcion que devuelve el id segun la consulta
+  //funcion que devuelve el id segun la consulta
+    public Long asignarID() {
+        Query q;
+        try {
+            q = em.createQuery("select max(a.paiId) from Pais a");
+            return ((Long) q.getSingleResult()) + 1;
+        } catch (Exception e) {
+            return new Long(1);
+        }
     }
     
 }

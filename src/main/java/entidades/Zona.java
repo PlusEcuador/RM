@@ -46,7 +46,7 @@ public class Zona implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "ZonId")
-    private BigDecimal zonId;
+    private Long zonId;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 60)
@@ -81,11 +81,11 @@ public class Zona implements Serializable {
     public Zona() {
     }
 
-    public Zona(BigDecimal zonId) {
+    public Zona(Long zonId) {
         this.zonId = zonId;
     }
 
-    public Zona(BigDecimal zonId, String zonNombre, String zonDireccion, Character zonEstado, Date zonFHR, String zonUser) {
+    public Zona(Long zonId, String zonNombre, String zonDireccion, Character zonEstado, Date zonFHR, String zonUser) {
         this.zonId = zonId;
         this.zonNombre = zonNombre;
         this.zonDireccion = zonDireccion;
@@ -94,11 +94,11 @@ public class Zona implements Serializable {
         this.zonUser = zonUser;
     }
 
-    public BigDecimal getZonId() {
+    public Long getZonId() {
         return zonId;
     }
 
-    public void setZonId(BigDecimal zonId) {
+    public void setZonId(Long zonId) {
         this.zonId = zonId;
     }
 

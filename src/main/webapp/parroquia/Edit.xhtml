@@ -16,8 +16,14 @@
                         <p:inputText id="parId" value="#{parroquiaController.selected.parId}" title="#{bundle.EditParroquiaTitle_parId}" required="true" requiredMessage="#{bundle.EditParroquiaRequiredMessage_parId}"/>
                         <p:outputLabel value="#{bundle.EditParroquiaLabel_parNombre}" for="parNombre" />
                         <p:inputText id="parNombre" value="#{parroquiaController.selected.parNombre}" title="#{bundle.EditParroquiaTitle_parNombre}" required="true" requiredMessage="#{bundle.EditParroquiaRequiredMessage_parNombre}"/>
+                        
                         <p:outputLabel value="#{bundle.EditParroquiaLabel_parEstado}" for="parEstado" />
-                        <p:inputText id="parEstado" value="#{parroquiaController.selected.parEstado}" title="#{bundle.EditParroquiaTitle_parEstado}" required="true" requiredMessage="#{bundle.EditParroquiaRequiredMessage_parEstado}"/>
+                        <p:selectOneMenu id="parEstado" value="#{parroquiaController.selected.parEstado}" required="true" requiredMessage="#{bundle.EditParroquiaRequiredMessage_parEstado}">
+                            <f:selectItem itemLabel="ACTIVO" itemValue="A"></f:selectItem>
+                            <f:selectItem itemLabel="INACTIVO" itemValue="I"></f:selectItem>
+                        </p:selectOneMenu>
+                        
+                        
                         <p:outputLabel value="#{bundle.EditParroquiaLabel_parFHR}" for="parFHR" />
                         <p:calendar id="parFHR" pattern="MM/dd/yyyy HH:mm:ss" value="#{parroquiaController.selected.parFHR}" title="#{bundle.EditParroquiaTitle_parFHR}" required="true" requiredMessage="#{bundle.EditParroquiaRequiredMessage_parFHR}" showOn="button"/>
                         <p:outputLabel value="#{bundle.EditParroquiaLabel_parUser}" for="parUser" />

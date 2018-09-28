@@ -52,7 +52,7 @@ public class Parroquia implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "ParId")
-    private BigDecimal parId;
+    private Long parId;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 60)
@@ -96,11 +96,11 @@ public class Parroquia implements Serializable {
     public Parroquia() {
     }
 
-    public Parroquia(BigDecimal parId) {
+    public Parroquia(Long parId) {
         this.parId = parId;
     }
 
-    public Parroquia(BigDecimal parId, String parNombre, String parEstado, Date parFHR, String parUser, String parCodigo, String parInicial, short parSecuencial) {
+    public Parroquia(Long parId, String parNombre, String parEstado, Date parFHR, String parUser, String parCodigo, String parInicial, short parSecuencial) {
         this.parId = parId;
         this.parNombre = parNombre;
         this.parEstado = parEstado;
@@ -111,11 +111,11 @@ public class Parroquia implements Serializable {
         this.parSecuencial = parSecuencial;
     }
 
-    public BigDecimal getParId() {
+    public Long getParId() {
         return parId;
     }
 
-    public void setParId(BigDecimal parId) {
+    public void setParId(Long parId) {
         this.parId = parId;
     }
 

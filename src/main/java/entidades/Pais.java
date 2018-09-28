@@ -49,7 +49,7 @@ public class Pais implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "PaiId")
-    private BigDecimal paiId;
+    private Long paiId;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 60)
@@ -86,11 +86,11 @@ public class Pais implements Serializable {
     public Pais() {
     }
 
-    public Pais(BigDecimal paiId) {
+    public Pais(Long paiId) {
         this.paiId = paiId;
     }
 
-    public Pais(BigDecimal paiId, String paiNombre, String paiEstado, Date paiFHR, String paiUser, String paiCodigo, String paiInicial) {
+    public Pais(Long paiId, String paiNombre, String paiEstado, Date paiFHR, String paiUser, String paiCodigo, String paiInicial) {
         this.paiId = paiId;
         this.paiNombre = paiNombre;
         this.paiEstado = paiEstado;
@@ -100,11 +100,11 @@ public class Pais implements Serializable {
         this.paiInicial = paiInicial;
     }
 
-    public BigDecimal getPaiId() {
+    public Long getPaiId() {
         return paiId;
     }
 
-    public void setPaiId(BigDecimal paiId) {
+    public void setPaiId(Long paiId) {
         this.paiId = paiId;
     }
 

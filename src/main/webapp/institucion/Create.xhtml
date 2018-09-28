@@ -25,7 +25,7 @@
                         <p:inputText id="insLogo" value="#{institucionController.selected.insLogo}" title="#{bundle.CreateInstitucionTitle_insLogo}" required="true" requiredMessage="#{bundle.CreateInstitucionRequiredMessage_insLogo}"/>
 
                         <p:outputLabel value="#{bundle.CreateInstitucionLabel_insEstado}" for="insEstado" />
-                        <p:selectOneMenu id="insEstado" value="#{institucionController.selected.insEstado}" required="true" requiredMessage="#{bundle.EditInstitucionRequiredMessage_insFHR}">
+                        <p:selectOneMenu id="insEstado" value="#{institucionController.selected.insEstado}" required="true" requiredMessage="#{bundle.CreateInstitucionRequiredMessage_insEstado}">
                             <f:selectItem itemLabel="ACTIVO" itemValue="A"></f:selectItem>
                             <f:selectItem itemLabel="INACTIVO" itemValue="I"></f:selectItem>
                         </p:selectOneMenu>

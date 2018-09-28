@@ -6,9 +6,11 @@
 package ejb;
 
 import entidades.Provincia;
+import java.math.BigDecimal;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -27,6 +29,17 @@ public class ProvinciaFacade extends AbstractFacade<Provincia> {
 
     public ProvinciaFacade() {
         super(Provincia.class);
+    }
+    
+     //funcion que devuelve el id segun la consulta
+    public Long asignarID() {
+        Query q;
+        try {
+            q = em.createQuery("select max(a.proId) from Provincia a");
+            return ((Long) q.getSingleResult()) + 1;
+        } catch (Exception e) {
+            return new Long(1);
+        }
     }
     
 }

@@ -51,7 +51,7 @@ public class Provincia implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "ProId")
-    private BigDecimal proId;
+    private Long proId;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 60)
@@ -91,11 +91,11 @@ public class Provincia implements Serializable {
     public Provincia() {
     }
 
-    public Provincia(BigDecimal proId) {
+    public Provincia(Long proId) {
         this.proId = proId;
     }
 
-    public Provincia(BigDecimal proId, String proNombre, String proEstado, Date proFHR, String proUser, String proCodigo, String proInicial) {
+    public Provincia(Long proId, String proNombre, String proEstado, Date proFHR, String proUser, String proCodigo, String proInicial) {
         this.proId = proId;
         this.proNombre = proNombre;
         this.proEstado = proEstado;
@@ -105,11 +105,11 @@ public class Provincia implements Serializable {
         this.proInicial = proInicial;
     }
 
-    public BigDecimal getProId() {
+    public Long getProId() {
         return proId;
     }
 
-    public void setProId(BigDecimal proId) {
+    public void setProId(Long proId) {
         this.proId = proId;
     }
 

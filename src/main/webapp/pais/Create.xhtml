@@ -15,8 +15,14 @@
                         
                         <p:outputLabel value="#{bundle.CreatePaisLabel_paiNombre}" for="paiNombre" />
                         <p:inputText id="paiNombre" value="#{paisController.selected.paiNombre}" title="#{bundle.CreatePaisTitle_paiNombre}" required="true" requiredMessage="#{bundle.CreatePaisRequiredMessage_paiNombre}"/>
+                        
                         <p:outputLabel value="#{bundle.CreatePaisLabel_paiEstado}" for="paiEstado" />
-                        <p:inputText id="paiEstado" value="#{paisController.selected.paiEstado}" title="#{bundle.CreatePaisTitle_paiEstado}" required="true" requiredMessage="#{bundle.CreatePaisRequiredMessage_paiEstado}"/>
+                        <p:selectOneMenu id="paiEstado" value="#{paisController.selected.paiEstado}" required="true" requiredMessage="#{bundle.CreatePaisRequiredMessage_paiEstado}">
+                            <f:selectItem itemLabel="ACTIVO" itemValue="A"></f:selectItem>
+                            <f:selectItem itemLabel="INACTIVO" itemValue="I"></f:selectItem>
+                        </p:selectOneMenu>
+                        
+                        
                         <p:outputLabel value="#{bundle.CreatePaisLabel_paiFHR}" for="paiFHR" />
                         <p:calendar id="paiFHR" pattern="MM/dd/yyyy HH:mm:ss" value="#{paisController.selected.paiFHR}" title="#{bundle.EditPaisTitle_paiFHR}" required="true" requiredMessage="#{bundle.EditPaisRequiredMessage_paiFHR}" showOn="button"/>
                         <p:outputLabel value="#{bundle.CreatePaisLabel_paiUser}" for="paiUser" />

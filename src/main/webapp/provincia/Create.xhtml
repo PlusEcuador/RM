@@ -15,8 +15,14 @@
                         
                         <p:outputLabel value="#{bundle.CreateProvinciaLabel_proNombre}" for="proNombre" />
                         <p:inputText id="proNombre" value="#{provinciaController.selected.proNombre}" title="#{bundle.CreateProvinciaTitle_proNombre}" required="true" requiredMessage="#{bundle.CreateProvinciaRequiredMessage_proNombre}"/>
+                        
                         <p:outputLabel value="#{bundle.CreateProvinciaLabel_proEstado}" for="proEstado" />
-                        <p:inputText id="proEstado" value="#{provinciaController.selected.proEstado}" title="#{bundle.CreateProvinciaTitle_proEstado}" required="true" requiredMessage="#{bundle.CreateProvinciaRequiredMessage_proEstado}"/>
+                        <p:selectOneMenu id="proEstado" value="#{provinciaController.selected.proEstado}" required="true" requiredMessage="#{bundle.CreateProvinciaRequiredMessage_proEstado}">
+                            <f:selectItem itemLabel="ACTIVO" itemValue="A"></f:selectItem>
+                            <f:selectItem itemLabel="INACTIVO" itemValue="I"></f:selectItem>
+                        </p:selectOneMenu>
+                        
+                        
                         <p:outputLabel value="#{bundle.CreateProvinciaLabel_proFHR}" for="proFHR" />
                         <p:calendar id="proFHR" pattern="MM/dd/yyyy HH:mm:ss" value="#{provinciaController.selected.proFHR}" title="#{bundle.EditProvinciaTitle_proFHR}" required="true" requiredMessage="#{bundle.EditProvinciaRequiredMessage_proFHR}" showOn="button"/>
                         <p:outputLabel value="#{bundle.CreateProvinciaLabel_proUser}" for="proUser" />

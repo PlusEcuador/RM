@@ -52,11 +52,11 @@ public class Institucion implements Serializable {
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+//    @GeneratedValue(strategy=GenerationType.AUTO)
 
     @Basic(optional = false)
     @Column(name = "InsId")
-    private BigDecimal insId;
+    private Long insId;
     @Basic(optional = false)
     @Column(name = "InsRuc")
     private String insRuc;
@@ -85,11 +85,11 @@ public class Institucion implements Serializable {
     public Institucion() {
     }
 
-    public Institucion(BigDecimal insId) {
+    public Institucion(Long insId) {
         this.insId = insId;
     }
 
-    public Institucion(BigDecimal insId, String insRuc, String insNombre, String insTelefono, String insLogo, String insEstado, Date insFHR, String insUser) {
+    public Institucion(Long insId, String insRuc, String insNombre, String insTelefono, String insLogo, String insEstado, Date insFHR, String insUser) {
         this.insId = insId;
         this.insRuc = insRuc;
         this.insNombre = insNombre;
@@ -100,11 +100,11 @@ public class Institucion implements Serializable {
         this.insUser = insUser;
     }
 
-    public BigDecimal getInsId() {
+    public Long getInsId() {
         return insId;
     }
 
-    public void setInsId(BigDecimal insId) {
+    public void setInsId(Long insId) {
         this.insId = insId;
     }
 

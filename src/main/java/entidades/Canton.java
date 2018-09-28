@@ -49,7 +49,7 @@ public class Canton implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "CanId")
-    private Short canId;
+    private Long canId;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 60)
@@ -89,11 +89,11 @@ public class Canton implements Serializable {
     public Canton() {
     }
 
-    public Canton(Short canId) {
+    public Canton(Long canId) {
         this.canId = canId;
     }
 
-    public Canton(Short canId, String canNombre, String canEstado, Date canFHR, String canUser, String canCodigo, String canInicial) {
+    public Canton(Long canId, String canNombre, String canEstado, Date canFHR, String canUser, String canCodigo, String canInicial) {
         this.canId = canId;
         this.canNombre = canNombre;
         this.canEstado = canEstado;
@@ -103,11 +103,11 @@ public class Canton implements Serializable {
         this.canInicial = canInicial;
     }
 
-    public Short getCanId() {
+    public Long getCanId() {
         return canId;
     }
 
-    public void setCanId(Short canId) {
+    public void setCanId(Long canId) {
         this.canId = canId;
     }
 

@@ -6,10 +6,13 @@ import controlador.util.JsfUtil.PersistAction;
 import ejb.InstitucionFacade;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.EJBException;
 import javax.inject.Named;
@@ -29,6 +32,11 @@ public class InstitucionController implements Serializable {
     private Institucion selected;
 
     public InstitucionController() {
+    }
+    
+    @PostConstruct
+    public void postConstruct()
+    {
     }
 
     public Institucion getSelected() {
@@ -56,6 +64,9 @@ public class InstitucionController implements Serializable {
     }
 
     public void create() {
+        //esta linea asigna el id de acuerdo a una consulta del max valor de id
+        //en la tabla respectiva
+        selected.setInsId(getFacade().asignarID());
         persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("InstitucionCreated"));
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
@@ -140,7 +151,7 @@ public class InstitucionController implements Serializable {
             return key;
         }
 
-        String getStringKey(java.math.BigDecimal value) {
+        String getStringKey(Long value) {
             StringBuilder sb = new StringBuilder();
             sb.append(value);
             return sb.toString();
@@ -153,6 +164,7 @@ public class InstitucionController implements Serializable {
             }
             if (object instanceof Institucion) {
                 Institucion o = (Institucion) object;
+                
                 return getStringKey(o.getInsId());
             } else {
                 Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), Institucion.class.getName()});

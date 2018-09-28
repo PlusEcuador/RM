@@ -24,8 +24,14 @@
                         <p:inputText id="insCelular" value="#{institucionController.selected.insCelular}" title="#{bundle.EditInstitucionTitle_insCelular}" />
                         <p:outputLabel value="#{bundle.EditInstitucionLabel_insLogo}" for="insLogo" />
                         <p:inputText id="insLogo" value="#{institucionController.selected.insLogo}" title="#{bundle.EditInstitucionTitle_insLogo}" required="true" requiredMessage="#{bundle.EditInstitucionRequiredMessage_insLogo}"/>
+                        
                         <p:outputLabel value="#{bundle.EditInstitucionLabel_insEstado}" for="insEstado" />
-                        <p:inputText id="insEstado" value="#{institucionController.selected.insEstado}" title="#{bundle.EditInstitucionTitle_insEstado}" required="true" requiredMessage="#{bundle.EditInstitucionRequiredMessage_insEstado}"/>
+                        <p:selectOneMenu id="insEstado" value="#{institucionController.selected.insEstado}" required="true" requiredMessage="#{bundle.EditInstitucionRequiredMessage_insEstado}">
+                            <f:selectItem itemLabel="ACTIVO" itemValue="A"></f:selectItem>
+                            <f:selectItem itemLabel="INACTIVO" itemValue="I"></f:selectItem>
+                        </p:selectOneMenu>
+                        
+                        
                         <p:outputLabel value="#{bundle.EditInstitucionLabel_insFHR}" for="insFHR" />
                         <p:calendar id="insFHR" pattern="MM/dd/yyyy HH:mm:ss" value="#{institucionController.selected.insFHR}" title="#{bundle.EditInstitucionTitle_insFHR}" required="true" requiredMessage="#{bundle.EditInstitucionRequiredMessage_insFHR}" showOn="button"/>
                         <p:outputLabel value="#{bundle.EditInstitucionLabel_insUser}" for="insUser" />

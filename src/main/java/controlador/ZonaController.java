@@ -56,6 +56,9 @@ public class ZonaController implements Serializable {
     }
 
     public void create() {
+        //esta linea asigna el id de acuerdo a una consulta del max valor de id
+        //en la tabla respectiva
+        selected.setZonId(getFacade().asignarID());
         persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("ZonaCreated"));
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
@@ -140,7 +143,7 @@ public class ZonaController implements Serializable {
             return key;
         }
 
-        String getStringKey(java.math.BigDecimal value) {
+        String getStringKey(java.lang.Long value) {
             StringBuilder sb = new StringBuilder();
             sb.append(value);
             return sb.toString();
