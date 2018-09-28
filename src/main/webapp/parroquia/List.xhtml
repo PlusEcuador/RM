@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/template.xhtml">
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListParroquiaTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="content">
+            <h:form id="ParroquiaListForm">
+                <p:panel header="#{bundle.ListParroquiaTitle}">
+                    <p:dataTable id="datalist" value="#{parroquiaController.items}" var="item"
+                                 selectionMode="single" selection="#{parroquiaController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.parId}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListParroquiaTitle_parId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.parId}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListParroquiaTitle_parNombre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.parNombre}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListParroquiaTitle_parEstado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.parEstado}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListParroquiaTitle_parFHR}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.parFHR}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListParroquiaTitle_parUser}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.parUser}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListParroquiaTitle_parCodigo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.parCodigo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListParroquiaTitle_parInicial}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.parInicial}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListParroquiaTitle_parSecuencial}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.parSecuencial}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListParroquiaTitle_ciuId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ciuId}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{parroquiaController.prepareCreate}" update=":ParroquiaCreateForm" oncomplete="PF('ParroquiaCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":ParroquiaViewForm" oncomplete="PF('ParroquiaViewDialog').show()" disabled="#{empty parroquiaController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":ParroquiaEditForm" oncomplete="PF('ParroquiaEditDialog').show()" disabled="#{empty parroquiaController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{parroquiaController.destroy}" update=":growl,datalist" disabled="#{empty parroquiaController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

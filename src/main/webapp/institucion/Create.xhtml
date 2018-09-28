@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="InstitucionCreateDlg" widgetVar="InstitucionCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateInstitucionTitle}">
+            <h:form id="InstitucionCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{institucionController.selected != null}">
+
+                        <p:outputLabel value="#{bundle.CreateInstitucionLabel_insRuc}" for="insRuc" />
+                        <p:inputText id="insRuc" value="#{institucionController.selected.insRuc}" title="#{bundle.CreateInstitucionTitle_insRuc}" required="true" requiredMessage="#{bundle.CreateInstitucionRequiredMessage_insRuc}"/>
+                        <p:outputLabel value="#{bundle.CreateInstitucionLabel_insNombre}" for="insNombre" />
+                        <p:inputText id="insNombre" value="#{institucionController.selected.insNombre}" title="#{bundle.CreateInstitucionTitle_insNombre}" required="true" requiredMessage="#{bundle.CreateInstitucionRequiredMessage_insNombre}"/>
+                        <p:outputLabel value="#{bundle.CreateInstitucionLabel_insTelefono}" for="insTelefono" />
+                        <p:inputText id="insTelefono" value="#{institucionController.selected.insTelefono}" title="#{bundle.CreateInstitucionTitle_insTelefono}" required="true" requiredMessage="#{bundle.CreateInstitucionRequiredMessage_insTelefono}"/>
+                        <p:outputLabel value="#{bundle.CreateInstitucionLabel_insCelular}" for="insCelular" />
+                        <p:inputText id="insCelular" value="#{institucionController.selected.insCelular}" title="#{bundle.CreateInstitucionTitle_insCelular}" />
+                        <p:outputLabel value="#{bundle.CreateInstitucionLabel_insLogo}" for="insLogo" />
+                        <p:inputText id="insLogo" value="#{institucionController.selected.insLogo}" title="#{bundle.CreateInstitucionTitle_insLogo}" required="true" requiredMessage="#{bundle.CreateInstitucionRequiredMessage_insLogo}"/>
+                        <p:outputLabel value="#{bundle.CreateInstitucionLabel_insEstado}" for="insEstado" />
+                        <p:inputText id="insEstado" value="#{institucionController.selected.insEstado}" title="#{bundle.CreateInstitucionTitle_insEstado}" required="true" requiredMessage="#{bundle.CreateInstitucionRequiredMessage_insEstado}"/>
+                        <p:outputLabel value="#{bundle.CreateInstitucionLabel_insFHR}" for="insFHR" />
+                        <p:calendar id="insFHR" pattern="MM/dd/yyyy HH:mm:ss" value="#{institucionController.selected.insFHR}" title="#{bundle.EditInstitucionTitle_insFHR}" required="true" requiredMessage="#{bundle.EditInstitucionRequiredMessage_insFHR}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateInstitucionLabel_insUser}" for="insUser" />
+                        <p:inputText id="insUser" value="#{institucionController.selected.insUser}" title="#{bundle.CreateInstitucionTitle_insUser}" required="true" requiredMessage="#{bundle.CreateInstitucionRequiredMessage_insUser}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{institucionController.create}" value="#{bundle.Save}" update="display,:InstitucionListForm:datalist,:growl" oncomplete="handleSubmit(args,'InstitucionCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="InstitucionCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

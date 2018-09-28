@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CiudadCreateDlg" widgetVar="CiudadCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateCiudadTitle}">
+            <h:form id="CiudadCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{ciudadController.selected != null}">
+                        
+                        <p:outputLabel value="#{bundle.CreateCiudadLabel_ciuNombre}" for="ciuNombre" />
+                        <p:inputText id="ciuNombre" value="#{ciudadController.selected.ciuNombre}" title="#{bundle.CreateCiudadTitle_ciuNombre}" required="true" requiredMessage="#{bundle.CreateCiudadRequiredMessage_ciuNombre}"/>
+                        <p:outputLabel value="#{bundle.CreateCiudadLabel_ciuEstado}" for="ciuEstado" />
+                        <p:inputText id="ciuEstado" value="#{ciudadController.selected.ciuEstado}" title="#{bundle.CreateCiudadTitle_ciuEstado}" required="true" requiredMessage="#{bundle.CreateCiudadRequiredMessage_ciuEstado}"/>
+                        <p:outputLabel value="#{bundle.CreateCiudadLabel_ciuFHR}" for="ciuFHR" />
+                        <p:calendar id="ciuFHR" pattern="MM/dd/yyyy HH:mm:ss" value="#{ciudadController.selected.ciuFHR}" title="#{bundle.EditCiudadTitle_ciuFHR}" required="true" requiredMessage="#{bundle.EditCiudadRequiredMessage_ciuFHR}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateCiudadLabel_ciuUser}" for="ciuUser" />
+                        <p:inputText id="ciuUser" value="#{ciudadController.selected.ciuUser}" title="#{bundle.CreateCiudadTitle_ciuUser}" required="true" requiredMessage="#{bundle.CreateCiudadRequiredMessage_ciuUser}"/>
+                        <p:outputLabel value="#{bundle.CreateCiudadLabel_ciuCodigo}" for="ciuCodigo" />
+                        <p:inputText id="ciuCodigo" value="#{ciudadController.selected.ciuCodigo}" title="#{bundle.CreateCiudadTitle_ciuCodigo}" required="true" requiredMessage="#{bundle.CreateCiudadRequiredMessage_ciuCodigo}"/>
+                        <p:outputLabel value="#{bundle.CreateCiudadLabel_ciuInicial}" for="ciuInicial" />
+                        <p:inputText id="ciuInicial" value="#{ciudadController.selected.ciuInicial}" title="#{bundle.CreateCiudadTitle_ciuInicial}" required="true" requiredMessage="#{bundle.CreateCiudadRequiredMessage_ciuInicial}"/>
+                        <p:outputLabel value="#{bundle.CreateCiudadLabel_canId}" for="canId" />
+                        <p:selectOneMenu id="canId" value="#{ciudadController.selected.canId}" required="true" requiredMessage="#{bundle.EditCiudadRequiredMessage_canId}">
+                            <f:selectItems value="#{cantonController.itemsAvailableSelectOne}" itemLabel="#{canIdItem.canNombre}"
+                                           var="canIdItem"
+                                           itemValue="#{canIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{ciudadController.create}" value="#{bundle.Save}" update="display,:CiudadListForm:datalist,:growl" oncomplete="handleSubmit(args,'CiudadCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CiudadCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

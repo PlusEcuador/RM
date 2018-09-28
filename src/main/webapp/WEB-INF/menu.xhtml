@@ -1,0 +1,54 @@
+<ui:composition
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:pa="http://primefaces.org/apollo">
+
+    <div class="layout-menu-container">
+        <div class="nano">
+            <div class="nano-content menu-scroll-content">
+                <div class="layout-menu-title">MENU</div>
+                <h:form id="menuform">
+                    <pa:menu>
+                        <p:menuitem id="id_principal" value="Pantalla Principal" icon="fa fa-dashboard" outcome="/dashboard"/>
+                        <p:submenu id="id_orientacion" label="Orientación" icon="fa fa-bars">
+                            <p:menuitem id="id_hmenu" value="Horizontal" icon="fa fa-arrows-h" actionListener="#{guestPreferences.setLayoutMode('horizontal')}" ajax="false" />
+                            <p:menuitem id="id_vmenu" value="Vertical" icon="fa fa-arrows-v" actionListener="#{guestPreferences.setLayoutMode('overlay')}" ajax="false" />
+                            <p:menuitem id="id_emenu" value="Estatico" icon="fa fa-bars" actionListener="#{guestPreferences.setLayoutMode('static')}" ajax="false" />
+                            <p:menuitem id="id_smenu" value="Simple" icon="fa fa-window-restore" actionListener="#{guestPreferences.setLayoutMode('slim')}" ajax="false" />
+                        </p:submenu>
+                        <p:submenu id="id_mantenimientos" label="Mantenimientos" icon="fa fa-book">
+                            <p:menuitem id="id_pais" value="País" icon="fa fa-table" outcome="/pais/List" ajax="false" />
+                            <p:menuitem id="id_provincia" value="Provincia" icon="fa fa-table" outcome="/provincia/List" ajax="false" />
+                            <p:menuitem id="id_canton" value="Cantón" icon="fa fa-table" outcome="/canton/List" ajax="false" />
+                            <p:menuitem id="id_ciudad" value="Ciudad" icon="fa fa-table" outcome="/ciudad/List" ajax="false" />
+                            <p:menuitem id="id_parroquia" value="Parroquia" icon="fa fa-table" outcome="/parroquia/List" ajax="false" />
+                            <p:menuitem id="id_zona" value="Zona" icon="fa fa-table" outcome="/zona/List" ajax="false" />
+                            <p:menuitem id="id_institucion" value="Institución" icon="fa fa-table" outcome="/institucion/List" ajax="false" />
+                        </p:submenu>
+
+                    </pa:menu>
+
+                    <div class="layout-menu-footer">
+                        <div class="layout-menu-footer-title">TASKS</div>
+
+                        <div class="layout-menu-footer-content">
+                            <p:progressBar value="50" labelTemplate="" displayOnly="true"/>
+                            Today
+
+                            <p:progressBar value="80" labelTemplate=""  displayOnly="true"/>
+                            Overall
+                        </div>
+                    </div>
+
+                </h:form>
+
+                <div class="nano-scroll-footer" />
+            </div>
+        </div>
+    </div>
+
+
+</ui:composition>

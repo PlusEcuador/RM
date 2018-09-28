@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CantonEditDlg" widgetVar="CantonEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditCantonTitle}">
+            <h:form id="CantonEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cantonController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditCantonLabel_canId}" for="canId" />
+                        <p:inputText id="canId" value="#{cantonController.selected.canId}" title="#{bundle.EditCantonTitle_canId}" required="true" requiredMessage="#{bundle.EditCantonRequiredMessage_canId}"/>
+                        <p:outputLabel value="#{bundle.EditCantonLabel_canNombre}" for="canNombre" />
+                        <p:inputText id="canNombre" value="#{cantonController.selected.canNombre}" title="#{bundle.EditCantonTitle_canNombre}" required="true" requiredMessage="#{bundle.EditCantonRequiredMessage_canNombre}"/>
+                        <p:outputLabel value="#{bundle.EditCantonLabel_canEstado}" for="canEstado" />
+                        <p:inputText id="canEstado" value="#{cantonController.selected.canEstado}" title="#{bundle.EditCantonTitle_canEstado}" required="true" requiredMessage="#{bundle.EditCantonRequiredMessage_canEstado}"/>
+                        <p:outputLabel value="#{bundle.EditCantonLabel_canFHR}" for="canFHR" />
+                        <p:calendar id="canFHR" pattern="MM/dd/yyyy HH:mm:ss" value="#{cantonController.selected.canFHR}" title="#{bundle.EditCantonTitle_canFHR}" required="true" requiredMessage="#{bundle.EditCantonRequiredMessage_canFHR}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditCantonLabel_canUser}" for="canUser" />
+                        <p:inputText id="canUser" value="#{cantonController.selected.canUser}" title="#{bundle.EditCantonTitle_canUser}" required="true" requiredMessage="#{bundle.EditCantonRequiredMessage_canUser}"/>
+                        <p:outputLabel value="#{bundle.EditCantonLabel_canCodigo}" for="canCodigo" />
+                        <p:inputText id="canCodigo" value="#{cantonController.selected.canCodigo}" title="#{bundle.EditCantonTitle_canCodigo}" required="true" requiredMessage="#{bundle.EditCantonRequiredMessage_canCodigo}"/>
+                        <p:outputLabel value="#{bundle.EditCantonLabel_canInicial}" for="canInicial" />
+                        <p:inputText id="canInicial" value="#{cantonController.selected.canInicial}" title="#{bundle.EditCantonTitle_canInicial}" required="true" requiredMessage="#{bundle.EditCantonRequiredMessage_canInicial}"/>
+                        <p:outputLabel value="#{bundle.EditCantonLabel_proId}" for="proId" />
+                        <p:selectOneMenu id="proId" value="#{cantonController.selected.proId}" required="true" requiredMessage="#{bundle.EditCantonRequiredMessage_proId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{provinciaController.itemsAvailableSelectOne}"
+                                           var="proIdItem"
+                                           itemValue="#{proIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{cantonController.update}" value="#{bundle.Save}" update="display,:CantonListForm:datalist,:growl" oncomplete="handleSubmit(args, 'CantonEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CantonEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

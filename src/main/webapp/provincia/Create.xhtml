@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProvinciaCreateDlg" widgetVar="ProvinciaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateProvinciaTitle}">
+            <h:form id="ProvinciaCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{provinciaController.selected != null}">
+                        
+                        <p:outputLabel value="#{bundle.CreateProvinciaLabel_proNombre}" for="proNombre" />
+                        <p:inputText id="proNombre" value="#{provinciaController.selected.proNombre}" title="#{bundle.CreateProvinciaTitle_proNombre}" required="true" requiredMessage="#{bundle.CreateProvinciaRequiredMessage_proNombre}"/>
+                        <p:outputLabel value="#{bundle.CreateProvinciaLabel_proEstado}" for="proEstado" />
+                        <p:inputText id="proEstado" value="#{provinciaController.selected.proEstado}" title="#{bundle.CreateProvinciaTitle_proEstado}" required="true" requiredMessage="#{bundle.CreateProvinciaRequiredMessage_proEstado}"/>
+                        <p:outputLabel value="#{bundle.CreateProvinciaLabel_proFHR}" for="proFHR" />
+                        <p:calendar id="proFHR" pattern="MM/dd/yyyy HH:mm:ss" value="#{provinciaController.selected.proFHR}" title="#{bundle.EditProvinciaTitle_proFHR}" required="true" requiredMessage="#{bundle.EditProvinciaRequiredMessage_proFHR}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateProvinciaLabel_proUser}" for="proUser" />
+                        <p:inputText id="proUser" value="#{provinciaController.selected.proUser}" title="#{bundle.CreateProvinciaTitle_proUser}" required="true" requiredMessage="#{bundle.CreateProvinciaRequiredMessage_proUser}"/>
+                        <p:outputLabel value="#{bundle.CreateProvinciaLabel_proCodigo}" for="proCodigo" />
+                        <p:inputText id="proCodigo" value="#{provinciaController.selected.proCodigo}" title="#{bundle.CreateProvinciaTitle_proCodigo}" required="true" requiredMessage="#{bundle.CreateProvinciaRequiredMessage_proCodigo}"/>
+                        <p:outputLabel value="#{bundle.CreateProvinciaLabel_proInicial}" for="proInicial" />
+                        <p:inputText id="proInicial" value="#{provinciaController.selected.proInicial}" title="#{bundle.CreateProvinciaTitle_proInicial}" required="true" requiredMessage="#{bundle.CreateProvinciaRequiredMessage_proInicial}"/>
+                        <p:outputLabel value="#{bundle.CreateProvinciaLabel_paiId}" for="paiId" />
+                        <p:selectOneMenu id="paiId" value="#{provinciaController.selected.paiId}" required="true" requiredMessage="#{bundle.EditProvinciaRequiredMessage_paiId}">
+                            <f:selectItems value="#{paisController.itemsAvailableSelectOne}" itemLabel="#{paiIdItem.paiNombre}"
+                                           var="paiIdItem"
+                                           itemValue="#{paiIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{provinciaController.create}" value="#{bundle.Save}" update="display,:ProvinciaListForm:datalist,:growl" oncomplete="handleSubmit(args,'ProvinciaCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ProvinciaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

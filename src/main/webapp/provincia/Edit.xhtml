@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProvinciaEditDlg" widgetVar="ProvinciaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditProvinciaTitle}">
+            <h:form id="ProvinciaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{provinciaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditProvinciaLabel_proId}" for="proId" />
+                        <p:inputText id="proId" value="#{provinciaController.selected.proId}" title="#{bundle.EditProvinciaTitle_proId}" required="true" requiredMessage="#{bundle.EditProvinciaRequiredMessage_proId}"/>
+                        <p:outputLabel value="#{bundle.EditProvinciaLabel_proNombre}" for="proNombre" />
+                        <p:inputText id="proNombre" value="#{provinciaController.selected.proNombre}" title="#{bundle.EditProvinciaTitle_proNombre}" required="true" requiredMessage="#{bundle.EditProvinciaRequiredMessage_proNombre}"/>
+                        <p:outputLabel value="#{bundle.EditProvinciaLabel_proEstado}" for="proEstado" />
+                        <p:inputText id="proEstado" value="#{provinciaController.selected.proEstado}" title="#{bundle.EditProvinciaTitle_proEstado}" required="true" requiredMessage="#{bundle.EditProvinciaRequiredMessage_proEstado}"/>
+                        <p:outputLabel value="#{bundle.EditProvinciaLabel_proFHR}" for="proFHR" />
+                        <p:calendar id="proFHR" pattern="MM/dd/yyyy HH:mm:ss" value="#{provinciaController.selected.proFHR}" title="#{bundle.EditProvinciaTitle_proFHR}" required="true" requiredMessage="#{bundle.EditProvinciaRequiredMessage_proFHR}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditProvinciaLabel_proUser}" for="proUser" />
+                        <p:inputText id="proUser" value="#{provinciaController.selected.proUser}" title="#{bundle.EditProvinciaTitle_proUser}" required="true" requiredMessage="#{bundle.EditProvinciaRequiredMessage_proUser}"/>
+                        <p:outputLabel value="#{bundle.EditProvinciaLabel_proCodigo}" for="proCodigo" />
+                        <p:inputText id="proCodigo" value="#{provinciaController.selected.proCodigo}" title="#{bundle.EditProvinciaTitle_proCodigo}" required="true" requiredMessage="#{bundle.EditProvinciaRequiredMessage_proCodigo}"/>
+                        <p:outputLabel value="#{bundle.EditProvinciaLabel_proInicial}" for="proInicial" />
+                        <p:inputText id="proInicial" value="#{provinciaController.selected.proInicial}" title="#{bundle.EditProvinciaTitle_proInicial}" required="true" requiredMessage="#{bundle.EditProvinciaRequiredMessage_proInicial}"/>
+                        <p:outputLabel value="#{bundle.EditProvinciaLabel_paiId}" for="paiId" />
+                        <p:selectOneMenu id="paiId" value="#{provinciaController.selected.paiId}" required="true" requiredMessage="#{bundle.EditProvinciaRequiredMessage_paiId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{paisController.itemsAvailableSelectOne}"
+                                           var="paiIdItem"
+                                           itemValue="#{paiIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{provinciaController.update}" value="#{bundle.Save}" update="display,:ProvinciaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ProvinciaEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ProvinciaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

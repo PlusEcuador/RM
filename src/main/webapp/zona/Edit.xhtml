@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ZonaEditDlg" widgetVar="ZonaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditZonaTitle}">
+            <h:form id="ZonaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{zonaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditZonaLabel_zonId}" for="zonId" />
+                        <p:inputText id="zonId" value="#{zonaController.selected.zonId}" title="#{bundle.EditZonaTitle_zonId}" required="true" requiredMessage="#{bundle.EditZonaRequiredMessage_zonId}"/>
+                        <p:outputLabel value="#{bundle.EditZonaLabel_zonNombre}" for="zonNombre" />
+                        <p:inputText id="zonNombre" value="#{zonaController.selected.zonNombre}" title="#{bundle.EditZonaTitle_zonNombre}" required="true" requiredMessage="#{bundle.EditZonaRequiredMessage_zonNombre}"/>
+                        <p:outputLabel value="#{bundle.EditZonaLabel_zonDireccion}" for="zonDireccion" />
+                        <p:inputText id="zonDireccion" value="#{zonaController.selected.zonDireccion}" title="#{bundle.EditZonaTitle_zonDireccion}" required="true" requiredMessage="#{bundle.EditZonaRequiredMessage_zonDireccion}"/>
+                        <p:outputLabel value="#{bundle.EditZonaLabel_zonEstado}" for="zonEstado" />
+                        <p:inputText id="zonEstado" value="#{zonaController.selected.zonEstado}" title="#{bundle.EditZonaTitle_zonEstado}" required="true" requiredMessage="#{bundle.EditZonaRequiredMessage_zonEstado}"/>
+                        <p:outputLabel value="#{bundle.EditZonaLabel_zonFHR}" for="zonFHR" />
+                        <p:calendar id="zonFHR" pattern="MM/dd/yyyy HH:mm:ss" value="#{zonaController.selected.zonFHR}" title="#{bundle.EditZonaTitle_zonFHR}" required="true" requiredMessage="#{bundle.EditZonaRequiredMessage_zonFHR}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditZonaLabel_zonUser}" for="zonUser" />
+                        <p:inputText id="zonUser" value="#{zonaController.selected.zonUser}" title="#{bundle.EditZonaTitle_zonUser}" required="true" requiredMessage="#{bundle.EditZonaRequiredMessage_zonUser}"/>
+                        <p:outputLabel value="#{bundle.EditZonaLabel_insId}" for="insId" />
+                        <p:selectOneMenu id="insId" value="#{zonaController.selected.insId}" required="true" requiredMessage="#{bundle.EditZonaRequiredMessage_insId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{institucionController.itemsAvailableSelectOne}"
+                                           var="insIdItem"
+                                           itemValue="#{insIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditZonaLabel_parId}" for="parId" />
+                        <p:selectOneMenu id="parId" value="#{zonaController.selected.parId}" required="true" requiredMessage="#{bundle.EditZonaRequiredMessage_parId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{parroquiaController.itemsAvailableSelectOne}"
+                                           var="parIdItem"
+                                           itemValue="#{parIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{zonaController.update}" value="#{bundle.Save}" update="display,:ZonaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ZonaEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ZonaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
