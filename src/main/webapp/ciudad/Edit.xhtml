@@ -16,10 +16,13 @@
                         <p:inputText id="ciuId" value="#{ciudadController.selected.ciuId}" title="#{bundle.EditCiudadTitle_ciuId}" required="true" requiredMessage="#{bundle.EditCiudadRequiredMessage_ciuId}"/>
                         <p:outputLabel value="#{bundle.EditCiudadLabel_ciuNombre}" for="ciuNombre" />
                         <p:inputText id="ciuNombre" value="#{ciudadController.selected.ciuNombre}" title="#{bundle.EditCiudadTitle_ciuNombre}" required="true" requiredMessage="#{bundle.EditCiudadRequiredMessage_ciuNombre}"/>
+                        
                         <p:outputLabel value="#{bundle.EditCiudadLabel_ciuEstado}" for="ciuEstado" />
-                        <p:inputText id="ciuEstado" value="#{ciudadController.selected.ciuEstado}" title="#{bundle.EditCiudadTitle_ciuEstado}" required="true" requiredMessage="#{bundle.EditCiudadRequiredMessage_ciuEstado}"/>
-                        <p:outputLabel value="#{bundle.EditCiudadLabel_ciuFHR}" for="ciuFHR" />
-                        <p:calendar id="ciuFHR" pattern="MM/dd/yyyy HH:mm:ss" value="#{ciudadController.selected.ciuFHR}" title="#{bundle.EditCiudadTitle_ciuFHR}" required="true" requiredMessage="#{bundle.EditCiudadRequiredMessage_ciuFHR}" showOn="button"/>
+                        <p:selectOneMenu id="ciuEstado" value="#{ciudadController.selected.ciuEstado}" required="true" requiredMessage="#{bundle.EditCiudadRequiredMessage_ciuEstado}">
+                            <f:selectItem itemLabel="ACTIVO" itemValue="A"></f:selectItem>
+                            <f:selectItem itemLabel="INACTIVO" itemValue="I"></f:selectItem>
+                        </p:selectOneMenu>
+                        
                         <p:outputLabel value="#{bundle.EditCiudadLabel_ciuUser}" for="ciuUser" />
                         <p:inputText id="ciuUser" value="#{ciudadController.selected.ciuUser}" title="#{bundle.EditCiudadTitle_ciuUser}" required="true" requiredMessage="#{bundle.EditCiudadRequiredMessage_ciuUser}"/>
                         <p:outputLabel value="#{bundle.EditCiudadLabel_ciuCodigo}" for="ciuCodigo" />
@@ -31,7 +34,7 @@
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{cantonController.itemsAvailableSelectOne}"
                                            var="canIdItem"
-                                           itemValue="#{canIdItem}"/>
+                                           itemValue="#{canIdItem}" itemLabel="#{canIdItem.canNombre}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{ciudadController.update}" value="#{bundle.Save}" update="display,:CiudadListForm:datalist,:growl" oncomplete="handleSubmit(args, 'CiudadEditDialog');"/>

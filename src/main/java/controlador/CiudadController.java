@@ -112,7 +112,7 @@ public class CiudadController implements Serializable {
         }
     }
 
-    public Ciudad getCiudad(java.math.BigDecimal id) {
+    public Ciudad getCiudad(java.lang.Long id) {
         return getFacade().find(id);
     }
 
@@ -137,9 +137,9 @@ public class CiudadController implements Serializable {
             return controller.getCiudad(getKey(value));
         }
 
-        java.math.BigDecimal getKey(String value) {
-            java.math.BigDecimal key;
-            key = new java.math.BigDecimal(value);
+        java.lang.Long getKey(String value) {
+            java.lang.Long key;
+            key = new java.lang.Long(value);
             return key;
         }
 

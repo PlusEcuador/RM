@@ -29,7 +29,7 @@
                         <h:outputText value="#{bundle.ViewCiudadLabel_ciuInicial}"/>
                         <h:outputText value="#{ciudadController.selected.ciuInicial}" title="#{bundle.ViewCiudadTitle_ciuInicial}"/>
                         <h:outputText value="#{bundle.ViewCiudadLabel_canId}"/>
-                        <h:outputText value="#{ciudadController.selected.canId}" title="#{bundle.ViewCiudadTitle_canId}"/>
+                        <h:outputText value="#{ciudadController.selected.canId.canNombre}" title="#{bundle.ViewCiudadTitle_canId}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="CiudadViewDialog.hide()"/>
                 </h:panelGroup>

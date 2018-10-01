@@ -12,8 +12,7 @@
             <h:form id="CantonViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{cantonController.selected != null}">
-                        <h:outputText value="#{bundle.ViewCantonLabel_canId}"/>
-                        <h:outputText value="#{cantonController.selected.canId}" title="#{bundle.ViewCantonTitle_canId}"/>
+                        
                         <h:outputText value="#{bundle.ViewCantonLabel_canNombre}"/>
                         <h:outputText value="#{cantonController.selected.canNombre}" title="#{bundle.ViewCantonTitle_canNombre}"/>
                         <h:outputText value="#{bundle.ViewCantonLabel_canEstado}"/>

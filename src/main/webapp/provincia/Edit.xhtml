@@ -12,8 +12,7 @@
             <h:form id="ProvinciaEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{provinciaController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditProvinciaLabel_proId}" for="proId" />
-                        <p:inputText id="proId" value="#{provinciaController.selected.proId}" title="#{bundle.EditProvinciaTitle_proId}" required="true" requiredMessage="#{bundle.EditProvinciaRequiredMessage_proId}"/>
+                        
                         <p:outputLabel value="#{bundle.EditProvinciaLabel_proNombre}" for="proNombre" />
                         <p:inputText id="proNombre" value="#{provinciaController.selected.proNombre}" title="#{bundle.EditProvinciaTitle_proNombre}" required="true" requiredMessage="#{bundle.EditProvinciaRequiredMessage_proNombre}"/>
                         
@@ -24,10 +23,8 @@
                         </p:selectOneMenu>
                         
                         
-                        <p:outputLabel value="#{bundle.EditProvinciaLabel_proEstado}" for="proEstado" />
-                        <p:inputText id="proEstado" value="#{provinciaController.selected.proEstado}" title="#{bundle.EditProvinciaTitle_proEstado}" required="true" requiredMessage="#{bundle.EditProvinciaRequiredMessage_proEstado}"/>
-                        <p:outputLabel value="#{bundle.EditProvinciaLabel_proFHR}" for="proFHR" />
-                        <p:calendar id="proFHR" pattern="MM/dd/yyyy HH:mm:ss" value="#{provinciaController.selected.proFHR}" title="#{bundle.EditProvinciaTitle_proFHR}" required="true" requiredMessage="#{bundle.EditProvinciaRequiredMessage_proFHR}" showOn="button"/>
+                        
+                        
                         <p:outputLabel value="#{bundle.EditProvinciaLabel_proUser}" for="proUser" />
                         <p:inputText id="proUser" value="#{provinciaController.selected.proUser}" title="#{bundle.EditProvinciaTitle_proUser}" required="true" requiredMessage="#{bundle.EditProvinciaRequiredMessage_proUser}"/>
                         <p:outputLabel value="#{bundle.EditProvinciaLabel_proCodigo}" for="proCodigo" />
@@ -39,7 +36,7 @@
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{paisController.itemsAvailableSelectOne}"
                                            var="paiIdItem"
-                                           itemValue="#{paiIdItem}"/>
+                                           itemValue="#{paiIdItem}" itemLabel="#{paiIdItem.paiNombre}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{provinciaController.update}" value="#{bundle.Save}" update="display,:ProvinciaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ProvinciaEditDialog');"/>

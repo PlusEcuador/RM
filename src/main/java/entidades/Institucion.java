@@ -6,9 +6,10 @@
 package entidades;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -83,6 +84,7 @@ public class Institucion implements Serializable {
     private String insUser;
 
     public Institucion() {
+        this.insFHR=Calendar.getInstance().getTime();
     }
 
     public Institucion(Long insId) {
@@ -96,6 +98,7 @@ public class Institucion implements Serializable {
         this.insTelefono = insTelefono;
         this.insLogo = insLogo;
         this.insEstado = insEstado;
+//        this.insFHR = insFHR;
         this.insFHR = insFHR;
         this.insUser = insUser;
     }

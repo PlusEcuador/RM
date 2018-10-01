@@ -31,7 +31,7 @@
                         <h:outputText value="#{bundle.ViewParroquiaLabel_parSecuencial}"/>
                         <h:outputText value="#{parroquiaController.selected.parSecuencial}" title="#{bundle.ViewParroquiaTitle_parSecuencial}"/>
                         <h:outputText value="#{bundle.ViewParroquiaLabel_ciuId}"/>
-                        <h:outputText value="#{parroquiaController.selected.ciuId}" title="#{bundle.ViewParroquiaTitle_ciuId}"/>
+                        <h:outputText value="#{parroquiaController.selected.ciuId.ciuNombre}" title="#{bundle.ViewParroquiaTitle_ciuId}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="ParroquiaViewDialog.hide()"/>
                 </h:panelGroup>

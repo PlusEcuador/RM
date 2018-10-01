@@ -112,7 +112,7 @@ public class ProvinciaController implements Serializable {
         }
     }
 
-    public Provincia getProvincia(java.math.BigDecimal id) {
+    public Provincia getProvincia(java.lang.Long id) {
         return getFacade().find(id);
     }
 
@@ -137,9 +137,9 @@ public class ProvinciaController implements Serializable {
             return controller.getProvincia(getKey(value));
         }
 
-        java.math.BigDecimal getKey(String value) {
-            java.math.BigDecimal key;
-            key = new java.math.BigDecimal(value);
+        java.lang.Long getKey(String value) {
+            java.lang.Long key;
+            key = new java.lang.Long(value);
             return key;
         }
 

@@ -15,10 +15,13 @@
                         
                         <p:outputLabel value="#{bundle.CreateCiudadLabel_ciuNombre}" for="ciuNombre" />
                         <p:inputText id="ciuNombre" value="#{ciudadController.selected.ciuNombre}" title="#{bundle.CreateCiudadTitle_ciuNombre}" required="true" requiredMessage="#{bundle.CreateCiudadRequiredMessage_ciuNombre}"/>
+                        
                         <p:outputLabel value="#{bundle.CreateCiudadLabel_ciuEstado}" for="ciuEstado" />
-                        <p:inputText id="ciuEstado" value="#{ciudadController.selected.ciuEstado}" title="#{bundle.CreateCiudadTitle_ciuEstado}" required="true" requiredMessage="#{bundle.CreateCiudadRequiredMessage_ciuEstado}"/>
-                        <p:outputLabel value="#{bundle.CreateCiudadLabel_ciuFHR}" for="ciuFHR" />
-                        <p:calendar id="ciuFHR" pattern="MM/dd/yyyy HH:mm:ss" value="#{ciudadController.selected.ciuFHR}" title="#{bundle.EditCiudadTitle_ciuFHR}" required="true" requiredMessage="#{bundle.EditCiudadRequiredMessage_ciuFHR}" showOn="button"/>
+                        <p:selectOneMenu id="ciuEstado" value="#{ciudadController.selected.ciuEstado}" required="true" requiredMessage="#{bundle.CreateCiudadRequiredMessage_ciuEstado}">
+                            <f:selectItem itemLabel="ACTIVO" itemValue="A"></f:selectItem>
+                            <f:selectItem itemLabel="INACTIVO" itemValue="I"></f:selectItem>
+                        </p:selectOneMenu>
+                        
                         <p:outputLabel value="#{bundle.CreateCiudadLabel_ciuUser}" for="ciuUser" />
                         <p:inputText id="ciuUser" value="#{ciudadController.selected.ciuUser}" title="#{bundle.CreateCiudadTitle_ciuUser}" required="true" requiredMessage="#{bundle.CreateCiudadRequiredMessage_ciuUser}"/>
                         <p:outputLabel value="#{bundle.CreateCiudadLabel_ciuCodigo}" for="ciuCodigo" />

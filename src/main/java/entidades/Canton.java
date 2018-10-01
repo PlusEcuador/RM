@@ -6,6 +6,7 @@
 package entidades;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
@@ -87,6 +88,7 @@ public class Canton implements Serializable {
     private Provincia proId;
 
     public Canton() {
+        this.canFHR=Calendar.getInstance().getTime();
     }
 
     public Canton(Long canId) {

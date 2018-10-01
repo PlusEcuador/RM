@@ -24,8 +24,7 @@
                         </p:selectOneMenu>
                         
                         
-                        <p:outputLabel value="#{bundle.EditParroquiaLabel_parFHR}" for="parFHR" />
-                        <p:calendar id="parFHR" pattern="MM/dd/yyyy HH:mm:ss" value="#{parroquiaController.selected.parFHR}" title="#{bundle.EditParroquiaTitle_parFHR}" required="true" requiredMessage="#{bundle.EditParroquiaRequiredMessage_parFHR}" showOn="button"/>
+                        
                         <p:outputLabel value="#{bundle.EditParroquiaLabel_parUser}" for="parUser" />
                         <p:inputText id="parUser" value="#{parroquiaController.selected.parUser}" title="#{bundle.EditParroquiaTitle_parUser}" required="true" requiredMessage="#{bundle.EditParroquiaRequiredMessage_parUser}"/>
                         <p:outputLabel value="#{bundle.EditParroquiaLabel_parCodigo}" for="parCodigo" />
@@ -39,7 +38,7 @@
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{ciudadController.itemsAvailableSelectOne}"
                                            var="ciuIdItem"
-                                           itemValue="#{ciuIdItem}"/>
+                                           itemValue="#{ciuIdItem}" itemLabel="#{ciuIdItem.ciuNombre}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{parroquiaController.update}" value="#{bundle.Save}" update="display,:ParroquiaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ParroquiaEditDialog');"/>

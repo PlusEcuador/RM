@@ -6,7 +6,7 @@
 package entidades;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
@@ -84,6 +84,7 @@ public class Pais implements Serializable {
     private List<Provincia> provinciaList;
 
     public Pais() {
+        this.paiFHR=Calendar.getInstance().getTime();
     }
 
     public Pais(Long paiId) {

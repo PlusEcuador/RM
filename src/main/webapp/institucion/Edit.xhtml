@@ -12,8 +12,7 @@
             <h:form id="InstitucionEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{institucionController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditInstitucionLabel_insId}" for="insId" />
-                        <p:inputText id="insId" value="#{institucionController.selected.insId}" title="#{bundle.EditInstitucionTitle_insId}" required="true" requiredMessage="#{bundle.EditInstitucionRequiredMessage_insId}"/>
+                        
                         <p:outputLabel value="#{bundle.EditInstitucionLabel_insRuc}" for="insRuc" />
                         <p:inputText id="insRuc" value="#{institucionController.selected.insRuc}" title="#{bundle.EditInstitucionTitle_insRuc}" required="true" requiredMessage="#{bundle.EditInstitucionRequiredMessage_insRuc}"/>
                         <p:outputLabel value="#{bundle.EditInstitucionLabel_insNombre}" for="insNombre" />
@@ -32,8 +31,7 @@
                         </p:selectOneMenu>
                         
                         
-                        <p:outputLabel value="#{bundle.EditInstitucionLabel_insFHR}" for="insFHR" />
-                        <p:calendar id="insFHR" pattern="MM/dd/yyyy HH:mm:ss" value="#{institucionController.selected.insFHR}" title="#{bundle.EditInstitucionTitle_insFHR}" required="true" requiredMessage="#{bundle.EditInstitucionRequiredMessage_insFHR}" showOn="button"/>
+                        
                         <p:outputLabel value="#{bundle.EditInstitucionLabel_insUser}" for="insUser" />
                         <p:inputText id="insUser" value="#{institucionController.selected.insUser}" title="#{bundle.EditInstitucionTitle_insUser}" required="true" requiredMessage="#{bundle.EditInstitucionRequiredMessage_insUser}"/>
                     </p:panelGrid>

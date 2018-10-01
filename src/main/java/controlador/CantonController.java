@@ -112,7 +112,7 @@ public class CantonController implements Serializable {
         }
     }
 
-    public Canton getCanton(java.lang.Short id) {
+    public Canton getCanton(java.lang.Long id) {
         return getFacade().find(id);
     }
 
@@ -137,9 +137,9 @@ public class CantonController implements Serializable {
             return controller.getCanton(getKey(value));
         }
 
-        java.lang.Short getKey(String value) {
-            java.lang.Short key;
-            key = Short.valueOf(value);
+        java.lang.Long getKey(String value) {
+            java.lang.Long key;
+            key = new java.lang.Long(value);
             return key;
         }
 

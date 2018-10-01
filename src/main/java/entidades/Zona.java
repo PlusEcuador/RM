@@ -7,6 +7,7 @@ package entidades;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Calendar;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -79,6 +80,7 @@ public class Zona implements Serializable {
     private Parroquia parId;
 
     public Zona() {
+        this.zonFHR=Calendar.getInstance().getTime();
     }
 
     public Zona(Long zonId) {

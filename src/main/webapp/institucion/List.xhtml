@@ -27,49 +27,44 @@
                         <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
                         <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
 
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListInstitucionTitle_insId}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.insId}"/>
-                        </p:column>
-                        <p:column>
+
+                        <p:column sortBy="#{item.insRuc}" filterBy="#{item.insRuc}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListInstitucionTitle_insRuc}"/>
                             </f:facet>
                             <h:outputText value="#{item.insRuc}"/>
                         </p:column>
-                        <p:column>
+                        <p:column sortBy="#{item.insNombre}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListInstitucionTitle_insNombre}"/>
                             </f:facet>
                             <h:outputText value="#{item.insNombre}"/>
                         </p:column>
-                        <p:column>
+                        <p:column sortBy="#{item.insTelefono}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListInstitucionTitle_insTelefono}"/>
                             </f:facet>
                             <h:outputText value="#{item.insTelefono}"/>
                         </p:column>
-                        <p:column>
+                        <p:column sortBy="#{item.insCelular}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListInstitucionTitle_insCelular}"/>
                             </f:facet>
                             <h:outputText value="#{item.insCelular}"/>
                         </p:column>
-                        <p:column>
+                        <p:column sortBy="#{item.insLogo}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListInstitucionTitle_insLogo}"/>
                             </f:facet>
                             <h:outputText value="#{item.insLogo}"/>
                         </p:column>
-                        <p:column>
+                        <p:column sortBy="#{item.insEstado}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListInstitucionTitle_insEstado}"/>
                             </f:facet>
                             <h:outputText value="#{item.insEstado}"/>
                         </p:column>
-                        <p:column>
+                        <p:column sortBy="#{item.insFHR}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListInstitucionTitle_insFHR}"/>
                             </f:facet>
@@ -77,7 +72,7 @@
                                 <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                             </h:outputText>
                         </p:column>
-                        <p:column>
+                        <p:column sortBy="#{item.insUser}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListInstitucionTitle_insUser}"/>
                             </f:facet>
@@ -90,6 +85,16 @@
                             <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{institucionController.destroy}" update=":growl,datalist" disabled="#{empty institucionController.selected}"/>
                         </f:facet>
                     </p:dataTable>
+                    <h3>Exportar:</h3>
+                    <h:commandLink>
+                        <p:graphicImage name="/imagenes/excel.png" />
+                        <p:dataExporter type="xls" target="datalist" fileName="pais" pageOnly="true"/>
+                    </h:commandLink>
+
+                    <h:commandLink>
+                        <p:graphicImage name="/imagenes/pdf.png" />
+                        <p:dataExporter type="pdf" target="datalist" fileName="pais" pageOnly="true" />
+                    </h:commandLink>
                 </p:panel>
             </h:form>
 

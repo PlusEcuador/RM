@@ -4,12 +4,16 @@ import entidades.Pais;
 import controlador.util.JsfUtil;
 import controlador.util.JsfUtil.PersistAction;
 import ejb.PaisFacade;
+import java.io.File;
+import java.io.InputStream;
 
 import java.io.Serializable;
+import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.EJBException;
 import javax.inject.Named;
@@ -18,6 +22,11 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.primefaces.model.UploadedFile;
 
 @Named("paisController")
 @SessionScoped
@@ -28,27 +37,39 @@ public class PaisController implements Serializable {
     private List<Pais> items = null;
     private Pais selected;
 
+    private UploadedFile file;
+
     public PaisController() {
+        System.out.println("**Controlador...**");
     }
 
-    public Pais getSelected() {
-        return selected;
+    @PostConstruct
+    public void postConstructor() {
+        System.out.println("**Post constructor...**");
     }
 
-    public void setSelected(Pais selected) {
-        this.selected = selected;
+    //METODOS PROPIOS
+    public void subirArchivo() {
+        System.out.println("controlador.PaisController.subirArchivo()");
+        try {
+            System.out.println("El archivo subido tiene por nombre: " + file.getFileName()
+                    + " y el tamaño es: " + file.getSize());
+            System.out.println("contenido: " + file.getContentType());
+            if (file.getContentType().equals("application/vnd.ms-excel")) {
+                System.out.println("Es un archivo excel");
+//                InputStream file;
+//                Workbook workbook = new WorkbookFactory().create();
+
+//                Iterator<Sheet> sheetIterator = workbook.iterator();
+            }
+        } catch (Exception e) {
+            System.out.println("El archivo es nulo");
+
+        }
+
     }
 
-    protected void setEmbeddableKeys() {
-    }
-
-    protected void initializeEmbeddableKey() {
-    }
-
-    private PaisFacade getFacade() {
-        return ejbFacade;
-    }
-
+    //METODOS CREADOS POR ASISTENTE
     public Pais prepareCreate() {
         selected = new Pais();
         initializeEmbeddableKey();
@@ -75,13 +96,6 @@ public class PaisController implements Serializable {
             selected = null; // Remove selection
             items = null;    // Invalidate list of items to trigger re-query.
         }
-    }
-
-    public List<Pais> getItems() {
-        if (items == null) {
-            items = getFacade().findAll();
-        }
-        return items;
     }
 
     private void persist(PersistAction persistAction, String successMessage) {
@@ -112,18 +126,6 @@ public class PaisController implements Serializable {
         }
     }
 
-    public Pais getPais(java.math.BigDecimal id) {
-        return getFacade().find(id);
-    }
-
-    public List<Pais> getItemsAvailableSelectMany() {
-        return getFacade().findAll();
-    }
-
-    public List<Pais> getItemsAvailableSelectOne() {
-        return getFacade().findAll();
-    }
-
     @FacesConverter(forClass = Pais.class)
     public static class PaisControllerConverter implements Converter {
 
@@ -137,9 +139,9 @@ public class PaisController implements Serializable {
             return controller.getPais(getKey(value));
         }
 
-        java.math.BigDecimal getKey(String value) {
-            java.math.BigDecimal key;
-            key = new java.math.BigDecimal(value);
+        java.lang.Long getKey(String value) {
+            java.lang.Long key;
+            key = new java.lang.Long(value);
             return key;
         }
 
@@ -163,6 +165,52 @@ public class PaisController implements Serializable {
             }
         }
 
+    }
+
+    //GETTERS Y SETTERS
+    public Pais getSelected() {
+        return selected;
+    }
+
+    public void setSelected(Pais selected) {
+        this.selected = selected;
+    }
+
+    protected void setEmbeddableKeys() {
+    }
+
+    protected void initializeEmbeddableKey() {
+    }
+
+    private PaisFacade getFacade() {
+        return ejbFacade;
+    }
+
+    public List<Pais> getItems() {
+        if (items == null) {
+            items = getFacade().findAll();
+        }
+        return items;
+    }
+
+    public Pais getPais(java.lang.Long id) {
+        return getFacade().find(id);
+    }
+
+    public List<Pais> getItemsAvailableSelectMany() {
+        return getFacade().findAll();
+    }
+
+    public List<Pais> getItemsAvailableSelectOne() {
+        return getFacade().findAll();
+    }
+
+    public UploadedFile getFile() {
+        return file;
+    }
+
+    public void setFile(UploadedFile file) {
+        this.file = file;
     }
 
 }

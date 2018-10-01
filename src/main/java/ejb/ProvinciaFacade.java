@@ -6,7 +6,6 @@
 package ejb;
 
 import entidades.Provincia;
-import java.math.BigDecimal;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

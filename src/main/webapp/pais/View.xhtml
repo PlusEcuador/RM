@@ -12,8 +12,7 @@
             <h:form id="PaisViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{paisController.selected != null}">
-                        <h:outputText value="#{bundle.ViewPaisLabel_paiId}"/>
-                        <h:outputText value="#{paisController.selected.paiId}" title="#{bundle.ViewPaisTitle_paiId}"/>
+                        
                         <h:outputText value="#{bundle.ViewPaisLabel_paiNombre}"/>
                         <h:outputText value="#{paisController.selected.paiNombre}" title="#{bundle.ViewPaisTitle_paiNombre}"/>
                         <h:outputText value="#{bundle.ViewPaisLabel_paiEstado}"/>

@@ -12,16 +12,17 @@
             <h:form id="ZonaCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{zonaController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateZonaLabel_zonId}" for="zonId" />
-                        <p:inputText id="zonId" value="#{zonaController.selected.zonId}" title="#{bundle.CreateZonaTitle_zonId}" required="true" requiredMessage="#{bundle.CreateZonaRequiredMessage_zonId}"/>
+                        
                         <p:outputLabel value="#{bundle.CreateZonaLabel_zonNombre}" for="zonNombre" />
                         <p:inputText id="zonNombre" value="#{zonaController.selected.zonNombre}" title="#{bundle.CreateZonaTitle_zonNombre}" required="true" requiredMessage="#{bundle.CreateZonaRequiredMessage_zonNombre}"/>
                         <p:outputLabel value="#{bundle.CreateZonaLabel_zonDireccion}" for="zonDireccion" />
                         <p:inputText id="zonDireccion" value="#{zonaController.selected.zonDireccion}" title="#{bundle.CreateZonaTitle_zonDireccion}" required="true" requiredMessage="#{bundle.CreateZonaRequiredMessage_zonDireccion}"/>
                         <p:outputLabel value="#{bundle.CreateZonaLabel_zonEstado}" for="zonEstado" />
-                        <p:inputText id="zonEstado" value="#{zonaController.selected.zonEstado}" title="#{bundle.CreateZonaTitle_zonEstado}" required="true" requiredMessage="#{bundle.CreateZonaRequiredMessage_zonEstado}"/>
-                        <p:outputLabel value="#{bundle.CreateZonaLabel_zonFHR}" for="zonFHR" />
-                        <p:calendar id="zonFHR" pattern="MM/dd/yyyy HH:mm:ss" value="#{zonaController.selected.zonFHR}" title="#{bundle.EditZonaTitle_zonFHR}" required="true" requiredMessage="#{bundle.EditZonaRequiredMessage_zonFHR}" showOn="button"/>
+                        <p:selectOneMenu id="zonEstado" value="#{zonaController.selected.zonEstado}" required="true" requiredMessage="#{bundle.CreateZonaRequiredMessage_zonEstado}">
+                            <f:selectItem itemLabel="ACTIVO" itemValue="A"></f:selectItem>
+                            <f:selectItem itemLabel="INACTIVO" itemValue="I"></f:selectItem>
+                        </p:selectOneMenu>
+                        
                         <p:outputLabel value="#{bundle.CreateZonaLabel_zonUser}" for="zonUser" />
                         <p:inputText id="zonUser" value="#{zonaController.selected.zonUser}" title="#{bundle.CreateZonaTitle_zonUser}" required="true" requiredMessage="#{bundle.CreateZonaRequiredMessage_zonUser}"/>
                         <p:outputLabel value="#{bundle.CreateZonaLabel_insId}" for="insId" />
@@ -34,7 +35,7 @@
                         <p:selectOneMenu id="parId" value="#{zonaController.selected.parId}" required="true" requiredMessage="#{bundle.EditZonaRequiredMessage_parId}">
                             <f:selectItems value="#{parroquiaController.itemsAvailableSelectOne}"
                                            var="parIdItem"
-                                           itemValue="#{parIdItem}"/>
+                                           itemValue="#{parIdItem}" itemLabel="#{parIdItem.parNombre}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{zonaController.create}" value="#{bundle.Save}" update="display,:ZonaListForm:datalist,:growl" oncomplete="handleSubmit(args,'ZonaCreateDialog');"/>

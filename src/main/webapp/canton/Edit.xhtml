@@ -12,14 +12,15 @@
             <h:form id="CantonEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{cantonController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditCantonLabel_canId}" for="canId" />
-                        <p:inputText id="canId" value="#{cantonController.selected.canId}" title="#{bundle.EditCantonTitle_canId}" required="true" requiredMessage="#{bundle.EditCantonRequiredMessage_canId}"/>
+                        
                         <p:outputLabel value="#{bundle.EditCantonLabel_canNombre}" for="canNombre" />
                         <p:inputText id="canNombre" value="#{cantonController.selected.canNombre}" title="#{bundle.EditCantonTitle_canNombre}" required="true" requiredMessage="#{bundle.EditCantonRequiredMessage_canNombre}"/>
-                        <p:outputLabel value="#{bundle.EditCantonLabel_canEstado}" for="canEstado" />
-                        <p:inputText id="canEstado" value="#{cantonController.selected.canEstado}" title="#{bundle.EditCantonTitle_canEstado}" required="true" requiredMessage="#{bundle.EditCantonRequiredMessage_canEstado}"/>
-                        <p:outputLabel value="#{bundle.EditCantonLabel_canFHR}" for="canFHR" />
-                        <p:calendar id="canFHR" pattern="MM/dd/yyyy HH:mm:ss" value="#{cantonController.selected.canFHR}" title="#{bundle.EditCantonTitle_canFHR}" required="true" requiredMessage="#{bundle.EditCantonRequiredMessage_canFHR}" showOn="button"/>
+                       <p:outputLabel value="#{bundle.EditCantonLabel_canEstado}" for="canEstado" />
+                        <p:selectOneMenu id="canEstado" value="#{cantonController.selected.canEstado}" required="true" requiredMessage="#{bundle.EditCantonRequiredMessage_canEstado}">
+                            <f:selectItem itemLabel="ACTIVO" itemValue="A"></f:selectItem>
+                            <f:selectItem itemLabel="INACTIVO" itemValue="I"></f:selectItem>
+                        </p:selectOneMenu>
+                        
                         <p:outputLabel value="#{bundle.EditCantonLabel_canUser}" for="canUser" />
                         <p:inputText id="canUser" value="#{cantonController.selected.canUser}" title="#{bundle.EditCantonTitle_canUser}" required="true" requiredMessage="#{bundle.EditCantonRequiredMessage_canUser}"/>
                         <p:outputLabel value="#{bundle.EditCantonLabel_canCodigo}" for="canCodigo" />
@@ -31,7 +32,7 @@
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{provinciaController.itemsAvailableSelectOne}"
                                            var="proIdItem"
-                                           itemValue="#{proIdItem}"/>
+                                           itemValue="#{proIdItem}" itemLabel="#{proIdItem.proNombre}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{cantonController.update}" value="#{bundle.Save}" update="display,:CantonListForm:datalist,:growl" oncomplete="handleSubmit(args, 'CantonEditDialog');"/>

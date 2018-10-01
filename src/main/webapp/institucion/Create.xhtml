@@ -30,8 +30,7 @@
                             <f:selectItem itemLabel="INACTIVO" itemValue="I"></f:selectItem>
                         </p:selectOneMenu>
 
-                        <p:outputLabel value="#{bundle.CreateInstitucionLabel_insFHR}" for="insFHR" />
-                        <p:calendar id="insFHR" pattern="MM/dd/yyyy HH:mm:ss" value="#{institucionController.selected.insFHR}" title="#{bundle.EditInstitucionTitle_insFHR}" required="true" requiredMessage="#{bundle.EditInstitucionRequiredMessage_insFHR}" showOn="button"/>
+                        
                         <p:outputLabel value="#{bundle.CreateInstitucionLabel_insUser}" for="insUser" />
                         <p:inputText id="insUser" value="#{institucionController.selected.insUser}" title="#{bundle.CreateInstitucionTitle_insUser}" required="true" requiredMessage="#{bundle.CreateInstitucionRequiredMessage_insUser}"/>
                     </p:panelGrid>

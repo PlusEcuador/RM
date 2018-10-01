@@ -12,8 +12,7 @@
             <h:form id="InstitucionViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{institucionController.selected != null}">
-                        <h:outputText value="#{bundle.ViewInstitucionLabel_insId}"/>
-                        <h:outputText value="#{institucionController.selected.insId}" title="#{bundle.ViewInstitucionTitle_insId}"/>
+                       
                         <h:outputText value="#{bundle.ViewInstitucionLabel_insRuc}"/>
                         <h:outputText value="#{institucionController.selected.insRuc}" title="#{bundle.ViewInstitucionTitle_insRuc}"/>
                         <h:outputText value="#{bundle.ViewInstitucionLabel_insNombre}"/>

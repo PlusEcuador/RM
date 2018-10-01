@@ -12,8 +12,7 @@
             <h:form id="ZonaViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{zonaController.selected != null}">
-                        <h:outputText value="#{bundle.ViewZonaLabel_zonId}"/>
-                        <h:outputText value="#{zonaController.selected.zonId}" title="#{bundle.ViewZonaTitle_zonId}"/>
+                        
                         <h:outputText value="#{bundle.ViewZonaLabel_zonNombre}"/>
                         <h:outputText value="#{zonaController.selected.zonNombre}" title="#{bundle.ViewZonaTitle_zonNombre}"/>
                         <h:outputText value="#{bundle.ViewZonaLabel_zonDireccion}"/>
@@ -27,9 +26,9 @@
                         <h:outputText value="#{bundle.ViewZonaLabel_zonUser}"/>
                         <h:outputText value="#{zonaController.selected.zonUser}" title="#{bundle.ViewZonaTitle_zonUser}"/>
                         <h:outputText value="#{bundle.ViewZonaLabel_insId}"/>
-                        <h:outputText value="#{zonaController.selected.insId}" title="#{bundle.ViewZonaTitle_insId}"/>
+                        <h:outputText value="#{zonaController.selected.insId.insNombre}" title="#{bundle.ViewZonaTitle_insId}"/>
                         <h:outputText value="#{bundle.ViewZonaLabel_parId}"/>
-                        <h:outputText value="#{zonaController.selected.parId}" title="#{bundle.ViewZonaTitle_parId}"/>
+                        <h:outputText value="#{zonaController.selected.parId.parNombre}" title="#{bundle.ViewZonaTitle_parId}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="ZonaViewDialog.hide()"/>
                 </h:panelGroup>

@@ -7,6 +7,7 @@ package entidades;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
@@ -94,6 +95,7 @@ public class Parroquia implements Serializable {
     private Ciudad ciuId;
 
     public Parroquia() {
+        this.parFHR=Calendar.getInstance().getTime();
     }
 
     public Parroquia(Long parId) {

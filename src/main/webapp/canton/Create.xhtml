@@ -16,9 +16,11 @@
                         <p:outputLabel value="#{bundle.CreateCantonLabel_canNombre}" for="canNombre" />
                         <p:inputText id="canNombre" value="#{cantonController.selected.canNombre}" title="#{bundle.CreateCantonTitle_canNombre}" required="true" requiredMessage="#{bundle.CreateCantonRequiredMessage_canNombre}"/>
                         <p:outputLabel value="#{bundle.CreateCantonLabel_canEstado}" for="canEstado" />
-                        <p:inputText id="canEstado" value="#{cantonController.selected.canEstado}" title="#{bundle.CreateCantonTitle_canEstado}" required="true" requiredMessage="#{bundle.CreateCantonRequiredMessage_canEstado}"/>
-                        <p:outputLabel value="#{bundle.CreateCantonLabel_canFHR}" for="canFHR" />
-                        <p:calendar id="canFHR" pattern="MM/dd/yyyy HH:mm:ss" value="#{cantonController.selected.canFHR}" title="#{bundle.EditCantonTitle_canFHR}" required="true" requiredMessage="#{bundle.EditCantonRequiredMessage_canFHR}" showOn="button"/>
+                        <p:selectOneMenu id="canEstado" value="#{cantonController.selected.canEstado}" required="true" requiredMessage="#{bundle.CreateCantonRequiredMessage_canEstado}">
+                            <f:selectItem itemLabel="ACTIVO" itemValue="A"></f:selectItem>
+                            <f:selectItem itemLabel="INACTIVO" itemValue="I"></f:selectItem>
+                        </p:selectOneMenu>
+                        
                         <p:outputLabel value="#{bundle.CreateCantonLabel_canUser}" for="canUser" />
                         <p:inputText id="canUser" value="#{cantonController.selected.canUser}" title="#{bundle.CreateCantonTitle_canUser}" required="true" requiredMessage="#{bundle.CreateCantonRequiredMessage_canUser}"/>
                         <p:outputLabel value="#{bundle.CreateCantonLabel_canCodigo}" for="canCodigo" />

@@ -12,8 +12,7 @@
             <h:form id="ProvinciaViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{provinciaController.selected != null}">
-                        <h:outputText value="#{bundle.ViewProvinciaLabel_proId}"/>
-                        <h:outputText value="#{provinciaController.selected.proId}" title="#{bundle.ViewProvinciaTitle_proId}"/>
+                        
                         <h:outputText value="#{bundle.ViewProvinciaLabel_proNombre}"/>
                         <h:outputText value="#{provinciaController.selected.proNombre}" title="#{bundle.ViewProvinciaTitle_proNombre}"/>
                         <h:outputText value="#{bundle.ViewProvinciaLabel_proEstado}"/>
@@ -29,7 +28,7 @@
                         <h:outputText value="#{bundle.ViewProvinciaLabel_proInicial}"/>
                         <h:outputText value="#{provinciaController.selected.proInicial}" title="#{bundle.ViewProvinciaTitle_proInicial}"/>
                         <h:outputText value="#{bundle.ViewProvinciaLabel_paiId}"/>
-                        <h:outputText value="#{provinciaController.selected.paiId}" title="#{bundle.ViewProvinciaTitle_paiId}"/>
+                        <h:outputText value="#{provinciaController.selected.paiId.paiNombre}" title="#{bundle.ViewProvinciaTitle_paiId}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="ProvinciaViewDialog.hide()"/>
                 </h:panelGroup>

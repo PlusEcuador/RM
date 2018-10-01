@@ -7,6 +7,7 @@ package entidades;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
@@ -89,6 +90,7 @@ public class Ciudad implements Serializable {
     private List<Parroquia> parroquiaList;
 
     public Ciudad() {
+        this.ciuFHR=Calendar.getInstance().getTime();
     }
 
     public Ciudad(Long ciuId) {
