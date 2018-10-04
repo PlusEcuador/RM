@@ -84,7 +84,9 @@ public class Pais implements Serializable {
     private List<Provincia> provinciaList;
 
     public Pais() {
+        
         this.paiFHR=Calendar.getInstance().getTime();
+        this.paiUser="ugenerico";
     }
 
     public Pais(Long paiId) {
@@ -95,10 +97,12 @@ public class Pais implements Serializable {
         this.paiId = paiId;
         this.paiNombre = paiNombre;
         this.paiEstado = paiEstado;
-        this.paiFHR = paiFHR;
-        this.paiUser = paiUser;
+//        this.paiFHR = paiFHR;
+//        this.paiUser = paiUser;
         this.paiCodigo = paiCodigo;
         this.paiInicial = paiInicial;
+        this.paiFHR=Calendar.getInstance().getTime();
+        this.paiUser="ugenerico";
     }
 
     public Long getPaiId() {

@@ -7,6 +7,7 @@ package ejb;
 
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.validation.ConstraintViolationException;
 
 /**
  *
@@ -23,7 +24,14 @@ public abstract class AbstractFacade<T> {
     protected abstract EntityManager getEntityManager();
 
     public void create(T entity) {
-        getEntityManager().persist(entity);
+        try {
+            getEntityManager().persist(entity);
+
+        } catch (ConstraintViolationException e) {
+            for (Object object : e.getConstraintViolations()) {
+                System.out.println(")"+object.toString());
+            }
+        }
     }
 
     public void edit(T entity) {
@@ -60,5 +68,5 @@ public abstract class AbstractFacade<T> {
         javax.persistence.Query q = getEntityManager().createQuery(cq);
         return ((Long) q.getSingleResult()).intValue();
     }
-    
+
 }

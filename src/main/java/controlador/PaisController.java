@@ -5,10 +5,19 @@ import controlador.util.JsfUtil;
 import controlador.util.JsfUtil.PersistAction;
 import ejb.PaisFacade;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 
 import java.io.Serializable;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Iterator;
+
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -18,18 +27,34 @@ import javax.ejb.EJB;
 import javax.ejb.EJBException;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.view.ViewScoped;
 import javax.faces.component.UIComponent;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.IndexedColors;
+import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFCellStyle;
+import org.apache.poi.xssf.usermodel.XSSFColor;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.primefaces.event.FileUploadEvent;
+
 import org.primefaces.model.UploadedFile;
 
 @Named("paisController")
-@SessionScoped
+@ViewScoped
 public class PaisController implements Serializable {
 
     @EJB
@@ -49,21 +74,169 @@ public class PaisController implements Serializable {
     }
 
     //METODOS PROPIOS
-    public void subirArchivo() {
-        System.out.println("controlador.PaisController.subirArchivo()");
+    public void subirArchivo(FileUploadEvent event) throws IOException, InvalidFormatException {
         try {
-            System.out.println("El archivo subido tiene por nombre: " + file.getFileName()
-                    + " y el tamaño es: " + file.getSize());
-            System.out.println("contenido: " + file.getContentType());
-            if (file.getContentType().equals("application/vnd.ms-excel")) {
-                System.out.println("Es un archivo excel");
-//                InputStream file;
-//                Workbook workbook = new WorkbookFactory().create();
 
-//                Iterator<Sheet> sheetIterator = workbook.iterator();
+            Boolean error = false;
+            List<String> errores = new ArrayList<>();
+            if (event.getFile() != null) {
+                InputStream is = event.getFile().getInputstream();
+
+                Workbook workbook = WorkbookFactory.create(is);
+                Sheet sheet = workbook.getSheetAt(0);
+
+                System.out.println("nombre de hoja: " + sheet.getSheetName());
+
+                Iterator<Row> rowIterator = sheet.iterator();
+                while (rowIterator.hasNext()) {//iterador filas
+
+                    Row row = rowIterator.next();
+
+                    Iterator<Cell> cellIterator = row.cellIterator();
+                    if (row.getRowNum() > 1) {
+                        Pais paisNuevo = new Pais();
+                        List<String> datosObjeto = new ArrayList<>();
+                        error = false;
+
+                        while (cellIterator.hasNext()) {
+                            Cell cell = cellIterator.next();
+                            CellStyle style = workbook.createCellStyle();
+
+                            switch (cell.getCellTypeEnum()) {
+                                case NUMERIC:
+                                    error = true;
+                                    errores.add(cell.getAddress().toString());
+                                    style.setFillBackgroundColor(IndexedColors.RED.getIndex());
+                                    cell.setCellStyle(style);
+                                    break;
+                                case STRING:
+                                    System.out.println("Agregando celda: " + cell.getAddress().toString()
+                                            + ": " + cell.getStringCellValue() + ";tipo: " + cell.getCellTypeEnum().name());
+                                    datosObjeto.add(cell.getStringCellValue().trim());
+                                    break;
+                                case BOOLEAN:
+                                    break;
+                                case FORMULA:
+                                    break;
+                                case BLANK:
+                                    System.out.println("Celda Vacía: " + cell.getAddress());
+                                    error = true;
+                                    errores.add(cell.getAddress().toString());
+                                    style.setFillBackgroundColor(IndexedColors.RED.getIndex());
+                                    cell.setCellStyle(style);
+                                    break;
+                                case _NONE:
+                                    System.out.println("Celda Vacía: " + cell.getAddress());
+                                    errores.add(cell.getAddress().toString());
+                                    error = true;
+                                    style.setFillBackgroundColor(IndexedColors.RED.getIndex());
+                                    cell.setCellStyle(style);
+                                    break;
+                            }
+                        }
+
+                        //IMPRESION DE DATOS DEL OBJECTO
+//                    System.out.println("--Impresion de objeto--");
+//                    for (String string : datosObjeto) {
+//                        System.out.println(string);
+//                    }
+                        //SI NO HAY ERRORES Y EL NUMERO DE ATRIBUTOS DEL OBJETO ES CORRECTO
+                        if (!error) {
+                            paisNuevo = new Pais(getFacade().asignarID(), datosObjeto.get(0), datosObjeto.get(1),
+                                    null, "", datosObjeto.get(2), datosObjeto.get(3));
+
+                            paisNuevo.setPaiNombre(datosObjeto.get(0));
+                            paisNuevo.setPaiEstado(datosObjeto.get(1));
+                            paisNuevo.setPaiCodigo(datosObjeto.get(2));
+                            paisNuevo.setPaiInicial(datosObjeto.get(3));
+
+                            getFacade().create(paisNuevo);
+                            System.out.println("Objeto Ingresado!!");
+                        } else {
+                            
+                            for (String errore : errores) {
+                                FacesContext.getCurrentInstance().addMessage(null, 
+                                    new FacesMessage(FacesMessage.SEVERITY_ERROR, 
+                                            "Error 0005: Ocurrio un error en la carga de archivo ("+errore.toString(), ""));
+                            }
+                            
+
+//                            FacesContext fc = FacesContext.getCurrentInstance();
+//                            ExternalContext ec = fc.getExternalContext();
+//
+//                            String nombreArchivo = "ListaPaises_" + Calendar.getInstance().getTime().toString() + ".xlsx";
+//                            ec.responseReset(); // limpia las cabeceras de la respuesta
+//                            ec.setResponseContentType("vnd.ms-excel"); // se define el tipo de contenido del archivo
+//                            ec.setResponseHeader("Content-Disposition", "attachment; filename=\"" + nombreArchivo + "\""); //Se descarga desde el navegador
+//
+//                            OutputStream output = ec.getResponseOutputStream();
+//                            workbook.write(output);//Se escribe el documento
+//
+//                            fc.responseComplete();//cierra la respuesta
+
+                        }
+                    }
+
+                }//FIN DE ITERADOR DE FILAS
+//            }
+            } else {
+                System.out.println("el archivo es nulo");
+
             }
+            //ACTUALIZO LA LISTA DE PAISES
+            items = getFacade().findAll();
         } catch (Exception e) {
-            System.out.println("El archivo es nulo");
+        }
+
+    }
+
+    public void exportarExcel() throws IOException, InvalidFormatException {
+        try {
+
+            Workbook wb = WorkbookFactory.create(new File("F:\\RM\\Proyectos Netbeans\\RM\\src\\main\\webapp\\Templates\\listaPais.xlsx"));
+            Sheet sheet = wb.getSheetAt(0);
+
+//LLENANDO EL EXCEL CON LA LISTA DE OBJETOS 
+
+            int i = 2;//comienza a escribir desde la fila 2
+            for (Pais pais : items) {
+                System.out.println("controlador.PaisController.exportarExcel()1");
+                System.out.println("Creo la fila: " + i);
+
+                Row row = sheet.createRow(i);
+                Cell cell;
+
+                System.out.println("Creo la columna 0");
+                cell = row.createCell(0);
+                cell.setCellValue(pais.getPaiNombre());
+                System.out.println("Creo la columna 1");
+                cell = row.createCell(1);
+                cell.setCellValue(pais.getPaiCodigo());
+                System.out.println("Creo la columna 2");
+                cell = row.createCell(2);
+                cell.setCellValue(pais.getPaiEstado());
+                System.out.println("Creo la columna 3");
+                cell = row.createCell(3);
+                cell.setCellValue(pais.getPaiInicial());
+                i++;
+            }
+
+            FacesContext fc = FacesContext.getCurrentInstance();
+            ExternalContext ec = fc.getExternalContext();
+
+            String nombreArchivo = "ListaPaises_" + Calendar.getInstance().getTime().toString() + ".xlsx";
+            ec.responseReset(); // limpia las cabeceras de la respuesta
+            ec.setResponseContentType("vnd.ms-excel"); // se define el tipo de contenido del archivo
+            ec.setResponseHeader("Content-Disposition", "attachment; filename=\"" + nombreArchivo + "\""); //Se descarga desde el navegador
+
+            OutputStream output = ec.getResponseOutputStream();
+            wb.write(output);//Se escribe el documento
+
+            fc.responseComplete();//cierra la respuesta
+
+        } catch (Exception e) {
+
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error 0004: Ocurrio un error con la carga y/o modificacion del template ListaPais", ""));
 
         }
 
