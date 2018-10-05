@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/WEB-INF/template.xhtml">
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListPaisTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="content" >
+            <h:form id="formRecepDocu" enctype="multipart/form-data">
+                <p:panel header="Recepción de documentos">
+                    <p:tabView>
+                        <p:tab title="Estándar">
+                            <h:panelGrid columns="2" cellpadding="10">
+                                <p:outputLabel value="CI/RUC/Pas." for="txtCiRucPas"/>
+                                <p:inputText id="txtCiRucPas" required="true" title="Recupera de tabla Persona" ></p:inputText>
+                                <p:outputLabel value="Nombre" for="txtNombre"/>
+                                <p:inputText id="txtNombre" ></p:inputText>
+                                <p:outputLabel value="Observacion" for="txtObservacion"/>
+                                <p:inputText id="txtObservacion" ></p:inputText>
+                                <p:outputLabel value="Calidad" for="txtCalidad"/>
+                                <p:inputText id="txtCalidad" ></p:inputText>
+                                <p:outputLabel for="btnFechaEntrega" value="Fecha Entrega"/>
+                                <p:calendar id="btnFechaEntrega" value="12/12/2012"  title="Calcula fecha actual más días de tabla" />
+                                <p:outputLabel value="Número de Trámite" for="txtNumTram" style="color:#b30000;"/>
+                                <p:inputText id="txtNumTram" ></p:inputText>
+                            </h:panelGrid>
+                            <h:panelGrid columns="7">
+                                <p:commandButton value="Crear"  icon="./images/add.png">
+                                    <p:graphicImage name="/imagenes/pdf.png" width="24" />
+                                </p:commandButton>
+                                <p:commandButton value="Imprimir"/>
+                                <p:commandButton value="Reingreso"/>
+                                <p:commandButton value="Limpiar"/>
+                                <p:commandButton value="Cierre"/>
+                                <p:commandButton value="Salir"/>
+                                <img src="../resources/imagenes/add.png" alt=""/>
+                            </h:panelGrid>
+                        </p:tab>
+
+                        <p:tab title="Grupos">
+                            <h:panelGrid columns="4" cellpadding="10">
+                                <p:outputLabel value="N° Trámites" for="txtNumTramG"/>
+                                <p:inputText id="txtNumTramG" required="true"></p:inputText>
+                                <h:outputText />
+                                <h:outputText />
+                                <p:outputLabel value="CI/RUC/PAS" for="txtCiRucPasG"/>
+                                <p:inputText id="txtCiRucPasG" required="true" ></p:inputText>
+                                <p:outputLabel value="Nombre" for="txtNombreG"/>
+                                <p:inputText id="txtNombreG" ></p:inputText>
+                                <p:outputLabel value="Observaciones" for="txtObsG"/>
+
+                                <p:inputText id="txtObsG" ></p:inputText>
+                                <h:outputText />
+                                <h:outputText />
+                                <p:outputLabel value="Trámite Inicial" for="txtTramIniG"/>
+                                <p:inputText id="txtTramIniG" ></p:inputText>
+                                <p:outputLabel value="Trámite Final" for="txtTramFinG"/>
+                                <p:inputText id="txtTramFinG" ></p:inputText>
+                                <p:outputLabel  value="Fecha Entrega" for="btnFechaEntregaG"/>
+                                <p:calendar id="btnFechaEntregaG"   />
+                                <h:outputText />
+                                <h:outputText />
+                            </h:panelGrid>
+                            <h:panelGrid columns="6">
+
+                                <p:commandButton value="Crear"/>
+                                <p:commandButton value="Imprimir"/>
+                                <p:commandButton value="Reingreso"/>
+                                <p:commandButton value="Limpiar"/>
+                                <p:commandButton value="Cierre"/>
+                                <p:commandButton value="Salir"/>
+                            </h:panelGrid>
+                        </p:tab>
+
+                        <p:tab title="Legal Unitario">
+                            <h:panelGrid columns="2" cellpadding="10">
+                                <p:outputLabel value="Notaría Legal" for="txtNotariaL"/>
+                                <p:inputText id="txtNotariaL" required="true" title="Recupera de Tabla Persona" ></p:inputText>
+                                <p:outputLabel value="Nombre" for="txtNombreL"/>
+                                <p:inputText id="txtNombreL" ></p:inputText>
+                                <p:outputLabel value="Observación" for="txtObsL"/>
+                                <p:inputText id="txtObsL" ></p:inputText>
+
+                                <p:outputLabel  value="Fecha Entrega" for="btnFechaEntregaL" title="Calcula fecha actual más días de tabla parametros"/>
+                                <p:calendar id="btnFechaEntregaL"  showOn="button" />
+                                <p:outputLabel value="Número de Trámite" for="txtNumTramL" style="color:#b30000;"/>
+                                <p:inputText id="txtNumTramL" ></p:inputText>
+                            </h:panelGrid>
+
+                        </p:tab>
+                    </p:tabView>
+
+
+                </p:panel>
+
+
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
