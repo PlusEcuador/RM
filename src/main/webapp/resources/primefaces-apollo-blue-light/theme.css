@@ -4362,3 +4362,23 @@ body .ui-log {
     padding: 6px 12px; }
 
 /* Add your customizations of theme here */
+.myIcon1 {
+    width: 32px;
+    height: 32px;
+    background: url("./images/add.png") no-repeat top left !important;
+}
+.myIcon2 {
+    background-image: url('../images/add.png') !important;
+}
+.myIcon3 {
+    width: 32px;
+    height: 32px;
+    background: url("../images/add.png") no-repeat top left !important;
+}
+.myIcon4 {
+    background-image: url('./images/add.png') !important;
+}
+
+body {
+        background-image: url('/images/add.png');
+}

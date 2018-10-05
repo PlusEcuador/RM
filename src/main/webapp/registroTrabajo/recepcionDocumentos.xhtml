@@ -14,7 +14,7 @@
 
         <ui:define name="content" >
             <h:form id="formRecepDocu" enctype="multipart/form-data">
-                <p:panel header="Recepción de documentos">
+                <p:panel header="Recepción de documentos" style="font-family: Arial, Helvetica, sans-serif;font-size: 15px;">
                     <p:tabView>
                         <p:tab title="Estándar">
                             <h:panelGrid columns="2" cellpadding="10">
@@ -32,15 +32,16 @@
                                 <p:inputText id="txtNumTram" ></p:inputText>
                             </h:panelGrid>
                             <h:panelGrid columns="7">
-                                <p:commandButton value="Crear"  icon="./images/add.png">
-                                    <p:graphicImage name="/imagenes/pdf.png" width="24" />
+
+                                <p:commandButton value="Crear"  icon="ui-icon-plus">
                                 </p:commandButton>
-                                <p:commandButton value="Imprimir"/>
+                                <p:commandButton value="Imprimir" icon="ui-icon-document"/>
                                 <p:commandButton value="Reingreso"/>
                                 <p:commandButton value="Limpiar"/>
                                 <p:commandButton value="Cierre"/>
                                 <p:commandButton value="Salir"/>
-                                <img src="../resources/imagenes/add.png" alt=""/>
+
+<!--                                <p:graphicImage class="logo" library="images" name="add.png" />-->
                             </h:panelGrid>
                         </p:tab>
 
@@ -92,6 +93,15 @@
                                 <p:calendar id="btnFechaEntregaL"  showOn="button" />
                                 <p:outputLabel value="Número de Trámite" for="txtNumTramL" style="color:#b30000;"/>
                                 <p:inputText id="txtNumTramL" ></p:inputText>
+                            </h:panelGrid>
+                            <h:panelGrid columns="6">
+
+                                <p:commandButton value="Crear"/>
+                                <p:commandButton value="Imprimir"/>
+                                <p:commandButton value="Reingreso"/>
+                                <p:commandButton value="Limpiar"/>
+                                <p:commandButton value="Cierre"/>
+                                <p:commandButton value="Salir"/>
                             </h:panelGrid>
 
                         </p:tab>

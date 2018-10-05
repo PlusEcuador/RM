@@ -1788,3 +1788,25 @@ h2 {
   .landing-wrapper .landing-footer img {
     width: 150px; } }
 /* Add your customizations of layout here */
+.myIcon1 {
+    width: 32px;
+    height: 32px;
+    background: url("./images/add.png") no-repeat top left !important;
+}
+
+
+.myIcon2 {
+    background-image: url('../images/add.png') !important;
+}
+.myIcon3 {
+    width: 32px;
+    height: 32px;
+    background: url("../images/add.png") no-repeat top left !important;
+}
+.myIcon4 {
+    background-image: url('./images/add.png') !important;
+}
+
+body {
+        background-image: url('/images/add.png');
+}

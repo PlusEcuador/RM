@@ -19,16 +19,17 @@
         <ui:insert name="head"/>
     </h:head>
 
-    <h:body>
+    <h:body style="font-family: Arial, Helvetica, sans-serif;font-size: 15px;">
         <p:growl id="growl" life="3000" />
         <div class="layout-wrapper layout-#{guestPreferences.layoutMode}">
+            
 
             <ui:include src="topbar.xhtml" />
             <ui:include src="menu.xhtml" />
 
             <div class="layout-content">
                 <div class="layout-content-container">
-                    <ui:insert name="content"/>
+                    <ui:insert name="content" />
                     
                         <p:confirmDialog global="true">
                             <p:commandButton value="Si" type="button" 
@@ -36,7 +37,6 @@
                             <p:commandButton value="No" type="button"
                                              styleClass="ui-confirmdialog-no red-btn" icon="ui-icon-close" />
                         </p:confirmDialog>
-                    
                 </div>
             </div>
 
