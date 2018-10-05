@@ -22,31 +22,39 @@
     <h:body>
         <p:growl id="growl" life="3000" />
         <div class="layout-wrapper layout-#{guestPreferences.layoutMode}">
-            
+
             <ui:include src="topbar.xhtml" />
             <ui:include src="menu.xhtml" />
-            
+
             <div class="layout-content">
                 <div class="layout-content-container">
                     <ui:insert name="content"/>
+                    
+                        <p:confirmDialog global="true">
+                            <p:commandButton value="Si" type="button" 
+                                             styleClass="ui-confirmdialog-yes green-btn" icon="ui-icon-check" />
+                            <p:commandButton value="No" type="button"
+                                             styleClass="ui-confirmdialog-no red-btn" icon="ui-icon-close" />
+                        </p:confirmDialog>
+                    
                 </div>
             </div>
-            
+
             <ui:include src="footer.xhtml" />
-            
+
             <div class="layout-mask"></div>
         </div>
-        
+
         <p:ajaxStatus style="width:32px;height:32px;position:fixed;right:7px;bottom:7px">
             <f:facet name="start">
                 <i class="ajax-status-icon fa fa-spinner fa-spin"></i>
             </f:facet>
-            
+
             <f:facet name="complete">
                 <h:outputText />
             </f:facet>
         </p:ajaxStatus>
-        
+
         <h:outputStylesheet name="css/nanoscroller.css" library="apollo-layout" />
         <h:outputStylesheet name="css/layout-#{guestPreferences.theme}.css" library="apollo-layout" />
     </h:body>

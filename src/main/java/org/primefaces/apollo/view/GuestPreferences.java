@@ -27,7 +27,7 @@ public class GuestPreferences implements Serializable {
     
     private boolean dark = false;
         
-    private String layoutMode = "horizontal";
+    private String layoutMode = "static";
 
 	public void updateTheme(String color, boolean dark) {
 		this.color = color;

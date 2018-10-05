@@ -5,29 +5,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
-<style>
 
-    .fa { 
-        color: orange;
-    }
-
-    .fa-download {
-        color: blue;
-    }
-
-    .colorOpen {
-        color: green;
-    }
-
-    .fa-file-picture-o {
-        color: purple;
-    }
-
-    .color30KB {
-        color: red;
-    }
-
-</style>
     <ui:composition template="/WEB-INF/template.xhtml">
 
         <ui:define name="title">
@@ -40,12 +18,17 @@
                     <p:tabView>
                         <p:tab title="Exportación">
                             <h:panelGrid id="pnlExportarTemplate" columns="2">
-                                <p:commandButton id="btnExportExcelTemplate" icon="fa fa-download"  ajax="false"  
-                                                 value="Excel"  actionListener="#{paisController.exportarExcel()}" />
-                                <p:commandButton id="btnExportPDF" value="PDF"  icon="fa fa-download">
 
-                                    <p:dataExporter type="pdf" target="datalist" fileName="pais" pageOnly="true" />
-                                </p:commandButton>
+                                <h:commandLink actionListener="#{paisController.exportarExcel()}" title="Exportar a Excel">
+                                    <p:graphicImage name="/imagenes/excel2.png" width="24" />
+
+                                </h:commandLink>
+                                <h:commandLink title="Exportar a PDF" >
+                                    <p:graphicImage name="/imagenes/pdf.png" width="24" />
+                                    <p:dataExporter type="pdf" target=":PaisListForm:datalist" fileName="pais" pageOnly="true" />
+                                </h:commandLink>
+
+
                             </h:panelGrid>    
                         </p:tab>
                         <p:tab title="Importación">
@@ -64,10 +47,10 @@
                     <!--TABLA-->
                     <p:dataTable id="datalist" value="#{paisController.items}" var="item"
                                  selectionMode="single" selection="#{paisController.selected}"
-                                 paginator="true"
+                                 paginator="true" 
                                  rowKey="#{item.paiId}"
                                  rows="10"
-                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 rowsPerPageTemplate="10,20,30,40,50" 
                                  >
 
                         <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
@@ -112,12 +95,19 @@
                             </f:facet>
                             <h:outputText value="#{item.paiInicial}"/>
                         </p:column>
-                        <f:facet name="footer">
-                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{paisController.prepareCreate}" update=":PaisCreateForm" oncomplete="PF('PaisCreateDialog').show()"/>
-                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":PaisViewForm" oncomplete="PF('PaisViewDialog').show()" disabled="#{empty paisController.selected}"/>
-                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":PaisEditForm" oncomplete="PF('PaisEditDialog').show()" disabled="#{empty paisController.selected}"/>
-                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{paisController.destroy}" update=":growl,datalist" disabled="#{empty paisController.selected}"/>
+
+                        <f:facet name="header" >
+                            <div align="right">
+                                <p:commandButton id="createButton"  icon="ui-icon-plus" class="green-btn"  value="#{bundle.Create}" actionListener="#{paisController.prepareCreate}" update=":PaisCreateForm" oncomplete="PF('PaisCreateDialog').show()" title="Crear nuevo país"/>
+                                <p:commandButton id="viewButton"   icon="ui-icon-search" class="blue-btn" value="#{bundle.View}" update=":PaisViewForm" oncomplete="PF('PaisViewDialog').show()" disabled="#{empty paisController.selected}" title="Ver país"/>
+                                <p:commandButton id="editButton"   icon="ui-icon-pencil" class="cyan-btn" value="#{bundle.Edit}" update=":PaisEditForm" oncomplete="PF('PaisEditDialog').show()" disabled="#{empty paisController.selected}" title="Editar país"/>
+                                <p:commandButton id="deleteButton" style="text-align: right" icon="ui-icon-trash" class="red-btn" value="#{bundle.Delete}" actionListener="#{paisController.destroy}" update=":growl,datalist" disabled="#{empty paisController.selected}" title="Eliminar país">
+                                    <p:confirm header="Confirmación" message="¿Desea eliminar el registro?" icon="ui-icon-alert" />
+                                </p:commandButton>
+                            </div>
+
                         </f:facet>
+
                     </p:dataTable>
 
 

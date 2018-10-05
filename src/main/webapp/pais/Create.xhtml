@@ -30,7 +30,7 @@
                         <p:outputLabel value="#{bundle.CreatePaisLabel_paiInicial}" for="paiInicial" />
                         <p:inputText id="paiInicial" value="#{paisController.selected.paiInicial}" title="#{bundle.CreatePaisTitle_paiInicial}" required="true" requiredMessage="#{bundle.CreatePaisRequiredMessage_paiInicial}"/>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{paisController.create}" value="#{bundle.Save}" update="display,:PaisListForm:datalist,:growl" oncomplete="handleSubmit(args,'PaisCreateDialog');"/>
+                    <p:commandButton actionListener="#{paisController.create}" value="#{bundle.Save}" update="display,:PaisListForm:datalist,:growl" oncomplete="PF('PaisCreateDialog').hide();" />
                     <p:commandButton value="#{bundle.Cancel}" onclick="PaisCreateDialog.hide()"/>
                 </h:panelGroup>
             </h:form>

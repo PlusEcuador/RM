@@ -1,7 +1,7 @@
 /* Predefined Colors */
 /* source-sans-pro-300 - latin-ext_latin */
 @font-face {
-  font-family: 'Source Sans Pro';
+  font-family: 'Arial';
   font-style: normal;
   font-weight: 300;
   src: url("#{resource['apollo-layout:fonts/source-sans-pro-v11-latin-ext_latin-300.eot']}");

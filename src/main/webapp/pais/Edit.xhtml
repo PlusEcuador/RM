@@ -31,7 +31,7 @@
                         <p:outputLabel value="#{bundle.EditPaisLabel_paiInicial}" for="paiInicial" />
                         <p:inputText id="paiInicial" value="#{paisController.selected.paiInicial}" title="#{bundle.EditPaisTitle_paiInicial}" required="true" requiredMessage="#{bundle.EditPaisRequiredMessage_paiInicial}"/>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{paisController.update}" value="#{bundle.Save}" update="display,:PaisListForm:datalist,:growl" oncomplete="handleSubmit(args, 'PaisEditDialog');"/>
+                    <p:commandButton actionListener="#{paisController.update}" value="#{bundle.Save}" update="display,:PaisListForm:datalist,:growl" oncomplete="PF('PaisEditDialog').hide()"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="PaisEditDialog.hide()"/>
                 </h:panelGroup>
             </h:form>

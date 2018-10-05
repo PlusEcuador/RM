@@ -4360,5 +4360,9 @@ body .ui-log {
         left: auto; }
   body .ui-log .ui-log-content {
     padding: 6px 12px; }
+  
 
 /* Add your customizations of theme here */
+.prueba {
+background: none repeat scroll 0 0 red;
+}

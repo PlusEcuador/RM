@@ -20,15 +20,175 @@
                             <p:menuitem id="id_smenu" value="Simple" icon="fa fa-window-restore" actionListener="#{guestPreferences.setLayoutMode('slim')}" ajax="false" />
                         </p:submenu>
                         <p:submenu id="id_mantenimientos" label="Mantenimientos" icon="fa fa-book">
-                            <p:menuitem id="id_pais" value="País" icon="fa fa-table" outcome="/pais/List" ajax="false" />
-                            <p:menuitem id="id_provincia" value="Provincia" icon="fa fa-table" outcome="/provincia/List" ajax="false" />
-                            <p:menuitem id="id_canton" value="Cantón" icon="fa fa-table" outcome="/canton/List" ajax="false" />
-                            <p:menuitem id="id_ciudad" value="Ciudad" icon="fa fa-table" outcome="/ciudad/List" ajax="false" />
-                            <p:menuitem id="id_parroquia" value="Parroquia" icon="fa fa-table" outcome="/parroquia/List" ajax="false" />
-                            <p:menuitem id="id_zona" value="Zona" icon="fa fa-table" outcome="/zona/List" ajax="false" />
-                            <p:menuitem id="id_institucion" value="Institución" icon="fa fa-table" outcome="/institucion/List" ajax="false" />
+                            <p:menuitem id="id_pais" value="País" icon="fa fa-file-text" outcome="/pais/List" ajax="false" />
+                            <p:menuitem id="id_provincia" value="Provincia" icon="fa fa-file-text" outcome="/provincia/List" ajax="false" />
+                            <p:menuitem id="id_canton" value="Cantón" icon="fa fa-file-text" outcome="/canton/List" ajax="false" />
+                            <p:menuitem id="id_ciudad" value="Ciudad" icon="fa fa-file-text" outcome="/ciudad/List" ajax="false" />
+                            <p:menuitem id="id_parroquia" value="Parroquia" icon="fa fa-file-text" outcome="/parroquia/List" ajax="false" />
+                            <p:menuitem id="id_zona" value="Zona" icon="fa fa-file-text" outcome="/zona/List" ajax="false" />
+                            <p:menuitem id="id_institucion" value="Institución" icon="fa fa-file-text" outcome="/institucion/List" ajax="false" />
+                        </p:submenu>
+                        <p:submenu  label="OPCIÓN 1" icon="fa fa-book">
+                            <p:menuitem  value="Contabilidad" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Caja" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Pagos" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="IVA" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
                         </p:submenu>
 
+                        <p:submenu  label="OPCIÓN 2" icon="fa fa-book">
+                            <p:menuitem  value="Ingreso TrÁmite" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Ingreso Libro Negro" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Razones" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Suspensión" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Revisión" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                        </p:submenu>
+
+                        <p:submenu  label="OPCION 3" icon="fa fa-book">
+                            <p:menuitem  value="Proformas" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Repertorio" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Personas" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Compañias" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                        </p:submenu>
+
+                        <p:submenu  label="OPCION 4" icon="fa fa-book">
+                            <p:menuitem  value="Marginación" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Matriculación" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Cooperativas" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Asignación de Trabajo" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Corrección de Índices" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Corección de Prohibiciones" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Marginación" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Búsqueda" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Impresión" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                        </p:submenu>
+
+                        <p:submenu  label="OPCIÓN 5" icon="fa fa-book">
+                            <p:menuitem  value="Inscripciones" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Impresión de Libros" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Impresión de Razones" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Ingreso Libros" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Ingreso de Índices" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Actualizar Propietario" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Impresión de Oficios" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Corección Razones" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Actualizar Índices" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Impresión de Suspensas" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                        </p:submenu>
+
+                        <p:submenu  label="OPCIÓN 6" icon="fa fa-book">
+                            <p:menuitem  value="Inscripción Legal" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Impresión Libros Legales" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Corección Prohibiciones" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Levantar Prohibiciones" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Cancelación  de Prohibiciones" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Búsqueda cancelación" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                        </p:submenu>
+
+                        <p:submenu  label="OPCIÓN 7" icon="fa fa-book">
+                            <p:menuitem  value="Gravámenes" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="DPH" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Negativas" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Bienes" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Impresión de Bienes" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Propiedad" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Desalojos" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Certificados" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                        </p:submenu>
+
+                        <p:submenu  label="OPCIÓN 8" icon="fa fa-book">
+                            <p:menuitem  value="Índice General" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Índices Prohibiciones" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Índice Propiedad" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Comprador" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Vendedores" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Certificados" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Consulta Tarjetas" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Libros" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Libro Negro" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Consulta Imágenes" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Búsqueda" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Razones de Suspensión" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Índice Propietario" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Control de Certificados" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Novedades Certificados" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Peticiones" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Recibir Trámite" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Control Proformas" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Índice Inverso" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Consulta Q" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                        </p:submenu>
+
+                        <p:submenu  label="OPCIÓN 9" icon="fa fa-book">
+                            <p:menuitem  value="Reporte de Bienes" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Reporte de Prohibiciones" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Reporte Negativas" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Reporte detalle Ingresos" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Trabajo Diarior" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Reporte Proformas" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Reporte Cooperativas por Tipo" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Solicitudes xxx" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Control de Oficios" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Impresión" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Cancelación" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Control Escritura Certificado" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Razones de Inscripción" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Habilitar Proforma M" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Reporte Legal" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                        </p:submenu>
+
+                        <p:submenu  label="OPCIÓN 10" icon="fa fa-book">
+                            <p:menuitem  value="Certificados" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Vistos Buenos" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Administración Trabajo" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Entrega de Escrituras" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Seguimiento" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Sellos" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Control Negativas" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Firma" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Entrega" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                        </p:submenu>
+
+                        <p:submenu  label="OPCIÓN 11" icon="fa fa-book">
+                            <p:menuitem  value="Cambio de Clave" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                        </p:submenu>
+
+                        <p:submenu  label="OPCIÓN 12" icon="fa fa-book">
+                            <p:menuitem  value="Sin Registro" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                        </p:submenu>
+                        <p:submenu  label="OPCIÓN A" icon="fa fa-book">
+                            <p:menuitem  value="Índices Comparecientes" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Índice de Inscripción" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Índice de Certificado" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Responsables" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Listado de Trabajo" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Reporte y Certificados" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Cambiar Nombre" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                        </p:submenu>
+                        <p:submenu  label="OPCIÓN B" icon="fa fa-book">
+                            <p:menuitem  value="Legal" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Eliminar Matrícula" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Eliminar contrato" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Habilitar Matrícula" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Cambiar Contrato" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                        </p:submenu>
+                        <p:submenu  label="OPCIÓN C" icon="fa fa-book">
+                            <p:menuitem  value="Administración de Usuarios" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Administración de Perfiles" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                        </p:submenu>
+                        <p:submenu  label="OPCIÓN D" icon="fa fa-book">
+                            <p:menuitem  value="Parámetros" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Aumentar Tipos" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Consulta Matrícula" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Impresión de Búsqueda" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Impresión de Lotes" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                        </p:submenu>
+                        <p:submenu  label="OPCIÓN E" icon="fa fa-book">
+                            <p:menuitem  value="Facturación Electrónica" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Solicitudes Via Web" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Consulta Digitalizada" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Firma Electrónica" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                            <p:menuitem  value="Acervo" icon="fa fa-file-text" outcome="/dashboard" ajax="false" />
+                        </p:submenu>
                     </pa:menu>
 
                     <div class="layout-menu-footer">
